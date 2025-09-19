@@ -1,0 +1,10 @@
+<?php
+
+$config = [
+  // 'host' => 'localhost',
+  // 'root' => "root",
+  // 'root_passwd' => "rootpass",
+  // 'user'=> 'user',
+  // 'pass' => 'pass',
+  // 'db' => "newdb"
+];

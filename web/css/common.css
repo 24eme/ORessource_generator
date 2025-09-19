@@ -1,0 +1,42 @@
+body {
+  padding-bottom: 40px;
+}
+
+body#body_public {
+    padding: 0;
+}
+
+body#body_public .container-sm {
+    padding: 0;
+}
+
+#main_container {
+    background-color: white;
+}
+
+#breadcrumb {
+    --bs-breadcrumb-divider: '>';
+}
+
+#carrousel {
+    position: relative;
+    display: flex;
+}
+
+.img-preview {
+    display: block;
+    height: 200px;
+    cursor: pointer;
+}
+
+.dragging {
+    opacity: 0.4;
+}
+
+table tr td.delrow i {
+    visibility: hidden;
+}
+
+table tr:hover td.delrow i {
+    visibility: visible;
+}

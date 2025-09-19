@@ -1,0 +1,9 @@
+<?php
+require_once('controllers/CtrlORessourceGenerator.class.php');
+
+$f3->route('GET /', 'CtrlORessourceGenerator->index');
+$f3->route('GET /index', 'CtrlORessourceGenerator->index');
+$f3->route('GET /create', 'CtrlORessourceGenerator->create');
+$f3->route('GET /visualisation', 'CtrlORessourceGenerator->visualisation');
+$f3->route('GET /redirect', 'CtrlORessourceGenerator->redirectToInstance');
+$f3->route('POST /generate', 'CtrlORessourceGenerator->generate');
