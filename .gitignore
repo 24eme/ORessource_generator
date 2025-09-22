@@ -1,3 +1,4 @@
 config/config.php
 config/dbconfig.php
 instances
+web/adminer*
