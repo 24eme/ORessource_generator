@@ -11,6 +11,21 @@ class CtrlORessourceGenerator
     echo View::instance()->render('/home.html.php');
   }
 
+  function demarrer(Base $f3)
+  {
+    echo View::instance()->render('/demarrer.html.php');
+  }
+
+  function selfhost(Base $f3)
+  {
+    echo View::instance()->render('/selfhost.html.php');
+  }
+
+  function webhost(Base $f3)
+  {
+    echo View::instance()->render('/webhost.html.php');
+  }
+
   function create(Base $f3)
   {
     $f3->set('from_backup', $f3->get('GET.from_backup'));

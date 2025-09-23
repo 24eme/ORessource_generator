@@ -32,23 +32,14 @@
           <li><a href="/#quiSommesNous" class="nav-link px-2">Qui sommes nous ?</a></li>
         </ul>
         <div class="col-md-3 text-end">
-          <a href="#utiliser" class="btn btn-primary">Démarrer avec ORessource</a>
+          <a href="#utiliser" class="btn btn-primary disabled">Démarrer avec ORessource</a>
         </div>
       </header>
     </div>
   </div>
   <div class="bg-light">
     <div class="container" style="max-width: 1050px;">
-      <div class="card">
-        <h5 class="card-header">Récapitulatif de votre instance</h5>
-        <div class="card-body">
-          <h5 class="card-title">Nom : <?php echo $SESSION['nomRessourcerie'];?></h5>
-          <h5 class="card-title">Adresse : <?php echo $SESSION['adresseRessourcerie'];?>, <?php echo $SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
-          <h5 class="card-title">Email: <?php echo $SESSION['email'];?></h5>
-          <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
-          <a href="/redirect" class="btn btn-primary">Accéder à votre instance</a>
-        </div>
-      </div>
+      page en construction
     </div>
   </div>
 

@@ -32,21 +32,32 @@
           <li><a href="/#quiSommesNous" class="nav-link px-2">Qui sommes nous ?</a></li>
         </ul>
         <div class="col-md-3 text-end">
-          <a href="#utiliser" class="btn btn-primary">Démarrer avec ORessource</a>
+          <a href="#utiliser" class="btn btn-primary disabled">Démarrer avec ORessource</a>
         </div>
       </header>
     </div>
   </div>
   <div class="bg-light">
     <div class="container" style="max-width: 1050px;">
-      <div class="card">
-        <h5 class="card-header">Récapitulatif de votre instance</h5>
-        <div class="card-body">
-          <h5 class="card-title">Nom : <?php echo $SESSION['nomRessourcerie'];?></h5>
-          <h5 class="card-title">Adresse : <?php echo $SESSION['adresseRessourcerie'];?>, <?php echo $SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
-          <h5 class="card-title">Email: <?php echo $SESSION['email'];?></h5>
-          <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
-          <a href="/redirect" class="btn btn-primary">Accéder à votre instance</a>
+      <div id="sauvegarde">
+        <h2>Je démarre : </h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card text-center">
+              <a href="/create"><img src="/images/new-database.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
+              <div class="card-body">
+                <h5 class="card-title">A partir d'une base de donnée vierge</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center">
+              <a href="/create?from_backup=true"><img src="/images/from-backup.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
+              <div class="card-body">
+                <h5 class="card-title">A partir d'une sauvegarde</h5>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -55,6 +66,8 @@
   <div class="container" style="max-width: 1050px;">
     <footer class="text-center text-muted pt-2">
       Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/ORessource_generator" target="_blank">voir le code source</a>
+      <br/>
+      <a href="https://www.flaticon.com/authors/eucalyp" target="_blank" title="icons">Icons by Eucalyp</a>
       <br/>
       <a href="/faq">Consulter la FAQ</a>
     </footer>

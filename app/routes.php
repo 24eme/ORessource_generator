@@ -3,6 +3,9 @@ require_once('controllers/CtrlORessourceGenerator.class.php');
 
 $f3->route('GET /', 'CtrlORessourceGenerator->index');
 $f3->route('GET /index', 'CtrlORessourceGenerator->index');
+$f3->route('GET /demarrer', 'CtrlORessourceGenerator->demarrer');
+$f3->route('GET /selfhost', 'CtrlORessourceGenerator->selfhost');
+$f3->route('GET /webhost', 'CtrlORessourceGenerator->webhost');
 $f3->route('GET /create', 'CtrlORessourceGenerator->create');
 $f3->route('GET /visualisation', 'CtrlORessourceGenerator->visualisation');
 $f3->route('GET /redirect', 'CtrlORessourceGenerator->redirectToInstance');

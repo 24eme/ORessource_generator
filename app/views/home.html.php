@@ -33,7 +33,7 @@
         </ul>
 
         <div class="col-md-3 text-end">
-          <a href="#utiliser" class="btn btn-primary">Démarrer avec ORessource</a>
+          <a href="/demarrer" class="btn btn-primary">Démarrer avec ORessource</a>
         </div>
       </header>
     </div>
@@ -215,49 +215,12 @@
       <a name="utiliser"></a>
       <h2 class="mb-4 text-center mt-4">Démarrer avec ORessource</h2>
       <div class="text-center">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a href="/demarrer" type="button" class="btn btn-primary" >
           Créer
-        </button>
+        </a>
       </div>
     </div>
   </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Mode de création</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-              <div class="card">
-                <a href="/create"><img src="/images/new-database.png" class="card-img-top" alt="A partir d'une base de donnée par défaut"></a>
-                <div class="card-body">
-                  <h5 class="card-title text-center">A partir d'une base de donnée par défaut</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <a href="/create?from_backup=true"><img src="/images/from-backup.png" class="card-img-top" alt="A partir d'une sauvegarde"></a>
-                <div class="card-body">
-                  <h5 class="card-title text-center">A partir de votre sauvegarde de base de donnée</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 
   <div class="bg-light" style="border-bottom: 1px solid #ddd">
     <div class="container pt-4 pb-5" style="max-width: 1050px;" >
@@ -275,7 +238,7 @@
   </div>
   <div class="container" style="max-width: 1050px;">
     <footer class="text-center text-muted pt-2">
-      Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/generateur_oressource">voir le code source</a>
+      Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/ORessource_generator" target="_blank">voir le code source</a>
       <br/>
       <a href="/faq">Consulter la FAQ</a>
     </footer>
