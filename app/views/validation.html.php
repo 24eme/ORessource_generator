@@ -48,7 +48,7 @@
         <h5 class="card-header">Rappel de vos informations de connection</h5>
         <form action="/generate" method="post">
           <div class="card-body">
-            <h5 class="card-title">Email: <?php echo $SESSION['email'];?></h5>
+            <h5 class="card-title">Email: <?php echo $SESSION['emailRessourcerie'];?></h5>
             <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
             <h5 class="card-title"><a href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a></h5>
             <a href="/create" class="btn btn-light">Retour</a>

@@ -42,7 +42,7 @@
       <a name="accueil"></a>
       <div class="row">
         <div class="col"></div>
-        <div class="col-8 justify-content-center mt-5">
+        <div id="mainInfo" class="col-8 justify-content-center mt-5">
           <?php foreach(\Flash::instance()->getMessages() as $message): ?>
             <div class="alert alert-<?php echo $message['status']?> alert-dismissable">
               <?php echo $message['text']; ?>
@@ -119,10 +119,69 @@
               <?php endif;?>
 
             </div>
-            <hr class="">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Valider mes informations</button>
+            <hr>
+            <a id="nextStep" class="btn btn-primary btn-lg float-end">Étape suivante</a>
+        </div>
+
+        <div id="secondInfo" class="col-8 justify-content-center mt-5" hidden>
+          <p>Afin de pouvoir pré remplir votre interface, vous pouvez renseigner des informations complémentaire dès maintenant :</p>
+          <?php foreach(\Flash::instance()->getMessages() as $message): ?>
+            <div class="alert alert-<?php echo $message['status']?> alert-dismissable">
+              <?php echo $message['text']; ?>
+            </div>
+          <?php endforeach;?>
+            <div class="row g-3">
+              <div class="col-4">
+                <label for="telRessourcerie" class="form-label">Numéro de téléphone</label>
+                <input type="text" class="form-control" id="telRessourcerie" name="telRessourcerie" placeholder="01 84 25 94 01">
+              </div>
+              <div class="col-4">
+                <label for="siretRessourcerie" class="form-label">SIRET</label>
+                <input type="text" class="form-control" id="siretRessourcerie" name="siretRessourcerie" placeholder="01 84 25 94 01">
+              </div>
+
+              <div class="col-4">
+                <label for="surfaceRessourcerie" class="form-label">Surface de votre ressourcerie</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="surfaceRessourcerie" name="surfaceRessourcerie" placeholder="20" value="">
+                  <span class="input-group-text" id="addonM2">m2</span>
+                </div>
+              </div>
+
+              <hr class="mt-4">
+
+              <div class="col-8">
+                <label for="nomCollecte" class="form-label">Nom du point de collecte principal</label>
+                <input type="text" class="form-control" id="nomCollecte" name="nomCollecte" placeholder="">
+              </div>
+              <div class="col-4"></div>
+              <div class="col-8">
+                <label for="adresseCollecte" class="form-label">Adresse du point de collecte principal</label>
+                <input type="text" class="form-control" id="adresseCollecte" name="adresseCollecte" placeholder="">
+              </div>
+              <div class="col-4"></div>
+
+              <hr class="mt-4">
+
+              <div class="col-8">
+                <label for="nomSortie" class="form-label">Nom du point de sortie principal</label>
+                <input type="text" class="form-control" id="nomSortie" name="nomSortie" placeholder="">
+              </div>
+              <div class="col-4"></div>
+              <div class="col-8">
+                <label for="adresseSortie" class="form-label">Adresse du point de sortie principal</label>
+                <input type="text" class="form-control" id="adresseSortie" name="adresseSortie" placeholder="">
+              </div>
+              <div class="col-4"></div>
+
+            </div>
+            <hr>
+            <a id="previousStep" class="btn btn-secondary btn-lg">Étape précédente</a>
+            <button class="btn btn-primary btn-lg float-end" type="submit">Valider mes informations</button>
           </form>
         </div>
+
+
         <div class="col"></div>
       </div>
     </div>
@@ -142,5 +201,17 @@
 <script src="/js/jquery-3.7.1.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/main.js"></script>
+
+<script>
+  document.querySelector('a#nextStep').addEventListener('click', function () {
+    document.querySelector('div#mainInfo').hidden = true;
+    document.querySelector('div#secondInfo').hidden = false;
+  });
+
+  document.querySelector('a#previousStep').addEventListener('click', function () {
+    document.querySelector('div#mainInfo').hidden = false;
+    document.querySelector('div#secondInfo').hidden = true;
+  });
+</script>
 
 </html>

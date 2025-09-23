@@ -50,7 +50,7 @@
           <div class="card-body">
             <h5 class="card-title">Nom : <?php echo $SESSION['nomRessourcerie'];?></h5>
             <h5 class="card-title">Adresse : <?php echo $SESSION['adresseRessourcerie'];?>, <?php echo $SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
-            <h5 class="card-title">Email: <?php echo $SESSION['email'];?></h5>
+            <h5 class="card-title">Email: <?php echo $SESSION['emailRessourcerie'];?></h5>
             <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
             <h5 class="card-title">DEV:: nom de la base : <?php echo $SESSION['db_name'];?></h5>
             <a href="/create" class="btn btn-light">Retour</a>

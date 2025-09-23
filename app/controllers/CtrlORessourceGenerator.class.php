@@ -53,8 +53,16 @@ class CtrlORessourceGenerator
     $ret['adresseRessourcerie'] = htmlspecialchars($data['adresseRessourcerie']);
     $ret['codePostal'] = filter_var($data['codePostal'], FILTER_SANITIZE_NUMBER_INT);
     $ret['ville'] = htmlspecialchars($data['ville']);
-    $ret['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+    $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
+
+    $ret['telRessourcerie'] = htmlspecialchars($data['telRessourcerie'])??'';
+    $ret['surfaceRessourcerie'] = htmlspecialchars($data['surfaceRessourcerie'])??'';
+    $ret['siretRessourcerie'] = htmlspecialchars($data['siretRessourcerie'])??'';
+    $ret['nomCollecte'] = htmlspecialchars($data['nomCollecte'])??'';
+    $ret['adresseCollecte'] = htmlspecialchars($data['adresseCollecte'])??'';
+    $ret['nomSortie'] = htmlspecialchars($data['nomSortie'])??'';
+    $ret['adresseSortie'] = htmlspecialchars($data['adresseSortie'])??'';
 
     return $ret;
   }
@@ -177,7 +185,9 @@ if (! file_put_contents($config_path,
     $dsn = "mysql:dbname=".$db_name.";host=".$host;
     $dbh = new PDO($dsn, $root, $root_passwd);
 
-    if (! $dbh->query(file_get_contents($backup))) {
+    $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'TEL_RESSOURCERIE', 'SURFACE_RESSOURCERIE', 'SIRET_RESSOURCERIE', 'NOM_COLLECTE', 'ADRESSE_COLLECTE', 'NOM_SORTIE', 'ADRESSE_SORTIE'];
+    $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie'), $f3->get('SESSION.telRessourceriey'), $f3->get('SESSION.surfaceRessourcerie'), $f3->get('SESSION.siretRessourcerie'), $f3->get('SESSION.nomCollecte'), $f3->get('SESSION.adresseCollecte'), $f3->get('SESSION.nomSortie'), $f3->get('SESSION.adresseSortie')];
+    if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
       return false;
     }
 
@@ -194,7 +204,7 @@ if (! file_put_contents($config_path,
       ':niveau'       => 'c1c2c3v1v2v3s1bighljk',
       ':nom'       => 'administrateur.ice',
       ':prenom'     => 'oressource',
-      ':mail'      => $f3->get('SESSION.email'),
+      ':mail'      => $f3->get('SESSION.emailRessourcerie'),
       ':pass' => md5($f3->get('SESSION.motDePasse')),
       ':id_createur'      => 1,
       ':id_last_hero'    => 1,
@@ -210,9 +220,4 @@ if (! file_put_contents($config_path,
   {
     echo View::instance()->render('/validation.html.php');
   }
-
-  // function redirectToInstance(Base $f3)
-  // {
-  //   return $f3->reroute($f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
-  // }
 }
