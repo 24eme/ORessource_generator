@@ -48,7 +48,7 @@
               <?php echo $message['text']; ?>
             </div>
           <?php endforeach;?>
-          <form class="needs-validation" action="/generate" method="post" enctype="multipart/form-data">
+          <form class="needs-validation" action="/dataCheck" method="post" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-8">
                 <label for="nomRessourcerie" class="form-label">Le nom de votre ressourcerie</label>
@@ -120,7 +120,7 @@
 
             </div>
             <hr class="">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Activer mon instance</button>
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Valider mes informations</button>
           </form>
         </div>
         <div class="col"></div>

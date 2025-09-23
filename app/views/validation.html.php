@@ -45,14 +45,12 @@
         </div>
       <?php endforeach;?>
       <div class="card">
-        <h5 class="card-header">Récapitulatif de votre instance</h5>
+        <h5 class="card-header">Rappel de vos informations de connection</h5>
         <form action="/generate" method="post">
           <div class="card-body">
-            <h5 class="card-title">Nom : <?php echo $SESSION['nomRessourcerie'];?></h5>
-            <h5 class="card-title">Adresse : <?php echo $SESSION['adresseRessourcerie'];?>, <?php echo $SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
             <h5 class="card-title">Email: <?php echo $SESSION['email'];?></h5>
             <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
-            <h5 class="card-title">DEV:: nom de la base : <?php echo $SESSION['db_name'];?></h5>
+            <h5 class="card-title"><a href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a></h5>
             <a href="/create" class="btn btn-light">Retour</a>
             <button type="submit" class="btn btn-primary float-end">Activer mon instance</button>
           </div>

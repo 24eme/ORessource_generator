@@ -11,7 +11,9 @@ $f3->set('UI', $f3->get('ROOT')."/app/views/");
 
 $f3->set('urlbase', Config::getInstance()->getUrlbase());
 
-$f3->set('UPLOADS', $f3->get('ROOT')."/web/uploads/");
+$f3->set('PATH_ORESSOURCE', "../../oressource");
+
+
 
 include('app/routes.php');
 
