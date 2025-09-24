@@ -30,7 +30,7 @@ $config = [
 ];
 ```
 
-Pour limiter les risques il est conseillé que l'utilisateur mariadb ait juste le droit de créer une base et un utilisateur;
+⚠️ Pour limiter les risques il est conseillé que l'utilisateur mariadb ait juste les droits mysql de créer une base et un utilisateur.
 
 Cloner le projet ORessource (en dehors du projet ORessource generator )
 
