@@ -56,28 +56,6 @@ class CtrlORessourceGenerator
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
 
-    if(array_key_exists('telRessourcerie', $data)){
-      $ret['telRessourcerie'] = filter_var($data['telRessourcerie'], FILTER_SANITIZE_NUMBER_INT);
-    }
-    if(array_key_exists('surfaceRessourcerie', $data)){
-      $ret['surfaceRessourcerie'] = filter_var($data['surfaceRessourcerie'], FILTER_SANITIZE_NUMBER_INT);
-    }
-    if (array_key_exists('siretRessourcerie', $data)) {
-      $ret['siretRessourcerie'] = filter_var($data['siretRessourcerie'], FILTER_SANITIZE_NUMBER_INT);
-    }
-    if (array_key_exists('nomCollecte', $data)) {
-      $ret['nomCollecte'] = htmlspecialchars($data['nomCollecte']);
-    }
-    if (array_key_exists('adresseCollecte', $data)) {
-      $ret['adresseCollecte'] = htmlspecialchars($data['adresseCollecte']);
-    }
-    if (array_key_exists('nomSortie', $data)) {
-      $ret['nomSortie'] = htmlspecialchars($data['nomSortie']);
-    }
-    if (array_key_exists('nomSortie', $data)) {
-      $ret['adresseSortie'] = htmlspecialchars($data['adresseSortie']);
-    }
-
     return $ret;
   }
 
@@ -199,8 +177,8 @@ if (! file_put_contents($config_path,
     $dsn = "mysql:dbname=".$db_name.";host=".$host;
     $dbh = new PDO($dsn, $root, $root_passwd);
 
-    $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'TEL_RESSOURCERIE', 'SURFACE_RESSOURCERIE', 'SIRET_RESSOURCERIE', 'NOM_COLLECTE', 'ADRESSE_COLLECTE', 'NOM_SORTIE', 'ADRESSE_SORTIE'];
-    $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie'), $f3->get('SESSION.telRessourceriey'), $f3->get('SESSION.surfaceRessourcerie'), $f3->get('SESSION.siretRessourcerie'), $f3->get('SESSION.nomCollecte'), $f3->get('SESSION.adresseCollecte'), $f3->get('SESSION.nomSortie'), $f3->get('SESSION.adresseSortie')];
+    $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE'];
+    $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie')];
     if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
       return false;
     }
