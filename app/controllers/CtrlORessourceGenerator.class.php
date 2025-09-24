@@ -112,6 +112,22 @@ class CtrlORessourceGenerator
       }
       $this->createConfig($f3, $data);
       $this->createDatabase($f3, $pass);
+      $message = '
+      <html>
+        <body>
+        </body>
+      </html>
+      ';
+      $headers = array(
+        'From' => 'contact@24eme.fr',
+        'Reply-To' => 'contact@24eme.fr',
+        'X-Mailer' => 'PHP/'.phpversion(),
+        'MIME-Version' => '1.0',
+        'Content-type' => 'text/html; charset=iso-8859-1'
+      );
+      if (! mail('tale-fau@24eme.fr', "Vos informations de connexion", $message, $headers)) {
+        throw new \Exception("Erreur à l'envoi du mail de confirmation");
+      }
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
       return $f3->reroute('/visualisation');
