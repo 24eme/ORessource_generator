@@ -55,6 +55,9 @@ class CtrlORessourceGenerator
     $ret['ville'] = htmlspecialchars($data['ville']);
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
+    if (array_key_exists('from_backup', $data)) {
+      $ret['from_backup'] = $data['from_backup'];
+    }
 
     return $ret;
   }

@@ -39,6 +39,14 @@
   </div>
   <div class="bg-light">
     <div class="container" style="max-width: 1050px;">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="/demarrer">Hébergement</a></li>
+          <li class="breadcrumb-item"><a href="/webhost">Base de donnée</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Informations</li>
+        </ol>
+      </nav>
       <a name="accueil"></a>
       <div class="row">
         <div class="col"></div>
@@ -116,6 +124,7 @@
                     <input class="form-control" type="file" id="fileInput" name="backupInput" required>
                   </div>
                 </div>
+                <input type="hidden" name="from_backup" value="true">
               <?php endif;?>
 
             </div>
