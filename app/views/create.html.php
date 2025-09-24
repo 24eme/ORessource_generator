@@ -134,8 +134,6 @@
     <footer class="text-center text-muted pt-2">
       Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/ORessource_generator" target="_blank">voir le code source</a>
       <br/>
-      <a href="https://www.flaticon.com/authors/eucalyp" target="_blank" title="icons">Icons by Eucalyp</a>
-      <br/>
       <a href="/faq">Consulter la FAQ</a>
     </footer>
   </div>

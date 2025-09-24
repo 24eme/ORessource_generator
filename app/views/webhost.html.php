@@ -44,7 +44,7 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
           <div class="col">
             <div class="card text-center">
-              <a href="/create"><img src="/images/new-database.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
+              <a href="/create"><img src="/images/eucalyp_new-database.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
               <div class="card-body">
                 <h5 class="card-title">A partir d'une base de donnée vierge</h5>
               </div>
@@ -52,7 +52,7 @@
           </div>
           <div class="col">
             <div class="card text-center">
-              <a href="/create?from_backup=true"><img src="/images/from-backup.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
+              <a href="/create?from_backup=true"><img src="/images/eucalyp_from-backup.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
               <div class="card-body">
                 <h5 class="card-title">A partir d'une sauvegarde</h5>
               </div>
@@ -66,8 +66,6 @@
   <div class="container" style="max-width: 1050px;">
     <footer class="text-center text-muted pt-2">
       Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/ORessource_generator" target="_blank">voir le code source</a>
-      <br/>
-      <a href="https://www.flaticon.com/authors/eucalyp" target="_blank" title="icons">Icons by Eucalyp</a>
       <br/>
       <a href="/faq">Consulter la FAQ</a>
     </footer>

@@ -55,7 +55,6 @@ class Config
     $this->config[$k] = $v;
   }
 
-
   public function getUrlbase()
   {
     if (!isset($this->config['urlbase'])) {

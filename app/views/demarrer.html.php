@@ -43,7 +43,7 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">
           <div class="card text-center">
-            <a href="/selfhost"><img src="/images/selfhost.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
+            <a href="/selfhost"><img src="/images/eucalyp_selfhost.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
             <div class="card-body">
               <h5 class="card-title">chez moi</h5>
             </div>
@@ -51,7 +51,7 @@
         </div>
         <div class="col">
           <div class="card text-center">
-            <a href="/webhost"><img src="/images/webhost.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
+            <a href="/webhost"><img src="/images/eucalyp_webhost.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
             <div class="card-body">
               <h5 class="card-title">en ligne</h5>
             </div>
@@ -85,8 +85,6 @@
   <div class="container" style="max-width: 1050px;">
     <footer class="text-center text-muted pt-2">
       Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/ORessource_generator" target="_blank">voir le code source</a>
-      <br/>
-      <a href="https://www.flaticon.com/authors/eucalyp" target="_blank" title="icons">Icons by Eucalyp</a>
       <br/>
       <a href="/faq">Consulter la FAQ</a>
     </footer>
