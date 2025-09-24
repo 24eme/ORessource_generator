@@ -48,11 +48,10 @@
         <h5 class="card-header">Récapitulatif de votre instance</h5>
         <form action="/generate" method="post">
           <div class="card-body">
-            <h5 class="card-title">Nom : <?php echo $SESSION['nomRessourcerie'];?></h5>
-            <h5 class="card-title">Adresse : <?php echo $SESSION['adresseRessourcerie'];?>, <?php echo $SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
-            <h5 class="card-title">Email: <?php echo $SESSION['emailRessourcerie'];?></h5>
-            <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
-            <h5 class="card-title">DEV:: nom de la base : <?php echo $SESSION['db_name'];?></h5>
+            <?php foreach ($SESSION as $champ => $valeur): ?>
+              <?php if($champ == "flash"){continue;}?>
+              <h5 class="card-title"><?php echo $champ . ' : ' . $valeur;?></h5>
+            <?php endforeach;?>
             <a href="/create" class="btn btn-light">Retour</a>
             <button type="submit" class="btn btn-primary float-end">Activer mon instance</button>
           </div>

@@ -120,6 +120,7 @@
 
             </div>
             <hr>
+            <?php if (! $from_backup):?>
             <a id="nextStep" class="btn btn-primary btn-lg float-end">Étape suivante</a>
         </div>
 
@@ -130,53 +131,88 @@
               <?php echo $message['text']; ?>
             </div>
           <?php endforeach;?>
-            <div class="row g-3">
+
+
+
+          <div class="row g-3">
+
+
+
+
               <div class="col-4">
                 <label for="telRessourcerie" class="form-label">Numéro de téléphone</label>
-                <input type="text" class="form-control" id="telRessourcerie" name="telRessourcerie" placeholder="01 84 25 94 01">
+                <input type="tel" class="form-control" id="telRessourcerie" name="telRessourcerie" placeholder="01 84 25 94 01">
               </div>
               <div class="col-4">
                 <label for="siretRessourcerie" class="form-label">SIRET</label>
-                <input type="text" class="form-control" id="siretRessourcerie" name="siretRessourcerie" placeholder="01 84 25 94 01">
+                <input type="text" inputmode="numeric" class="form-control" id="siretRessourcerie" name="siretRessourcerie" placeholder="810 720 557 00034">
               </div>
 
               <div class="col-4">
                 <label for="surfaceRessourcerie" class="form-label">Surface de votre ressourcerie</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="surfaceRessourcerie" name="surfaceRessourcerie" placeholder="20" value="">
+                  <input type="text" inputmode="numeric" class="form-control" id="surfaceRessourcerie" name="surfaceRessourcerie" placeholder="20" value="">
                   <span class="input-group-text" id="addonM2">m2</span>
                 </div>
               </div>
 
               <hr class="mt-4">
 
-              <div class="col-8">
-                <label for="nomCollecte" class="form-label">Nom du point de collecte principal</label>
-                <input type="text" class="form-control" id="nomCollecte" name="nomCollecte" placeholder="">
+              <div class="accordion" id="accordionInfoAdditionnelles">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Ajouter un point de collecte
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionInfoAdditionnelles">
+                    <div class="accordion-body">
+                      <div class="col-8">
+                        <label for="nomCollecte" class="form-label">Nom du point de collecte principal</label>
+                        <input type="text" class="form-control" id="nomCollecte" name="nomCollecte" placeholder="">
+                      </div>
+                      <div class="col-4"></div>
+                      <div class="col-8">
+                        <label for="adresseCollecte" class="form-label">Adresse du point de collecte principal</label>
+                        <input type="text" class="form-control" id="adresseCollecte" name="adresseCollecte" placeholder="">
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Ajouter un point de sortie
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionInfoAdditionnelles">
+                    <div class="accordion-body">
+                      <div class="col-8">
+                        <label for="nomSortie" class="form-label">Nom du point de sortie principal</label>
+                        <input type="text" class="form-control" id="nomSortie" name="nomSortie" placeholder="">
+                      </div>
+                      <div class="col-4"></div>
+                      <div class="col-8">
+                        <label for="adresseSortie" class="form-label">Adresse du point de sortie principal</label>
+                        <input type="text" class="form-control" id="adresseSortie" name="adresseSortie" placeholder="">
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-4"></div>
-              <div class="col-8">
-                <label for="adresseCollecte" class="form-label">Adresse du point de collecte principal</label>
-                <input type="text" class="form-control" id="adresseCollecte" name="adresseCollecte" placeholder="">
-              </div>
-              <div class="col-4"></div>
+
+
 
               <hr class="mt-4">
 
-              <div class="col-8">
-                <label for="nomSortie" class="form-label">Nom du point de sortie principal</label>
-                <input type="text" class="form-control" id="nomSortie" name="nomSortie" placeholder="">
-              </div>
-              <div class="col-4"></div>
-              <div class="col-8">
-                <label for="adresseSortie" class="form-label">Adresse du point de sortie principal</label>
-                <input type="text" class="form-control" id="adresseSortie" name="adresseSortie" placeholder="">
-              </div>
-              <div class="col-4"></div>
+
 
             </div>
             <hr>
             <a id="previousStep" class="btn btn-secondary btn-lg">Étape précédente</a>
+          <?php endif;?>
             <button class="btn btn-primary btn-lg float-end" type="submit">Valider mes informations</button>
           </form>
         </div>

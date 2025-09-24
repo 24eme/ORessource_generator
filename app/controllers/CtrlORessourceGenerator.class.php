@@ -56,13 +56,27 @@ class CtrlORessourceGenerator
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
 
-    $ret['telRessourcerie'] = htmlspecialchars($data['telRessourcerie'])??'';
-    $ret['surfaceRessourcerie'] = htmlspecialchars($data['surfaceRessourcerie'])??'';
-    $ret['siretRessourcerie'] = htmlspecialchars($data['siretRessourcerie'])??'';
-    $ret['nomCollecte'] = htmlspecialchars($data['nomCollecte'])??'';
-    $ret['adresseCollecte'] = htmlspecialchars($data['adresseCollecte'])??'';
-    $ret['nomSortie'] = htmlspecialchars($data['nomSortie'])??'';
-    $ret['adresseSortie'] = htmlspecialchars($data['adresseSortie'])??'';
+    if(array_key_exists('telRessourcerie', $data)){
+      $ret['telRessourcerie'] = filter_var($data['telRessourcerie'], FILTER_SANITIZE_NUMBER_INT);
+    }
+    if(array_key_exists('surfaceRessourcerie', $data)){
+      $ret['surfaceRessourcerie'] = filter_var($data['surfaceRessourcerie'], FILTER_SANITIZE_NUMBER_INT);
+    }
+    if (array_key_exists('siretRessourcerie', $data)) {
+      $ret['siretRessourcerie'] = filter_var($data['siretRessourcerie'], FILTER_SANITIZE_NUMBER_INT);
+    }
+    if (array_key_exists('nomCollecte', $data)) {
+      $ret['nomCollecte'] = htmlspecialchars($data['nomCollecte']);
+    }
+    if (array_key_exists('adresseCollecte', $data)) {
+      $ret['adresseCollecte'] = htmlspecialchars($data['adresseCollecte']);
+    }
+    if (array_key_exists('nomSortie', $data)) {
+      $ret['nomSortie'] = htmlspecialchars($data['nomSortie']);
+    }
+    if (array_key_exists('nomSortie', $data)) {
+      $ret['adresseSortie'] = htmlspecialchars($data['adresseSortie']);
+    }
 
     return $ret;
   }
