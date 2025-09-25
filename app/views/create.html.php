@@ -60,7 +60,7 @@
             <div class="row g-3">
               <div class="col-8">
                 <label for="nomRessourcerie" class="form-label">Le nom de votre ressourcerie</label>
-                <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="Le Recyclodrome" value="" required>
+                <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="Le Recyclodrome" value="<?php if (array_key_exists('nomRessourcerie', $SESSION)){echo $SESSION['nomRessourcerie'];} ?>" required>
                 <div class="invalid-feedback">
                   Nom de la ressourcerie nécessaire
                 </div>
@@ -68,7 +68,7 @@
 
               <div class="col-8">
                 <label for="adresseRessourcerie" class="form-label">Adresse de votre ressourcerie</label>
-                <input type="text" class="form-control" id="adresseRessourcerie" name="adresseRessourcerie" placeholder="47 Rue d'Aubagne" required>
+                <input type="text" class="form-control" id="adresseRessourcerie" name="adresseRessourcerie" placeholder="47 Rue d'Aubagne" value="<?php if (array_key_exists('adresseRessourcerie', $SESSION)){echo $SESSION['adresseRessourcerie'];} ?>" required>
                 <div class="invalid-feedback">
                   Adresse nécessaire
                 </div>
@@ -77,7 +77,7 @@
 
               <div class="col-2">
                 <label for="codePostal" class="form-label">Code postal</label>
-                <input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="13001" required>
+                <input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="13001" value="<?php if (array_key_exists('codePostal', $SESSION)){echo $SESSION['codePostal'];} ?>" required>
                 <div class="invalid-feedback">
                   Code postal nécessaire
                 </div>
@@ -85,7 +85,7 @@
 
               <div class="col-6">
                 <label for="ville" class="form-label">Ville</label>
-                <input type="text" class="form-control" id="ville" name="ville" placeholder="Marseille" required>
+                <input type="text" class="form-control" id="ville" name="ville" placeholder="Marseille" value="<?php if (array_key_exists('ville', $SESSION)){echo $SESSION['ville'];} ?>" required>
                 <div class="invalid-feedback">
                   Ville nécessaire
                 </div>
@@ -95,7 +95,7 @@
 
               <div class="col-12">
                 <label for="email" class="form-label">Adresse email</small></label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="vous@maressourcerie.fr" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="vous@maressourcerie.fr" value="<?php if (array_key_exists('emailRessourcerie', $SESSION)){echo $SESSION['emailRessourcerie'];} ?>" required>
                 <p class="text-muted">Cette adresse email vous servira d'identifiant administrateur.ice</p>
                 <div class="invalid-feedback">
                   Merci d'entrer une adresse mail valide, qui sera votre moyen de connexion au logiciel
