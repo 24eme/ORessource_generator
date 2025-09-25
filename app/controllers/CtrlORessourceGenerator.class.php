@@ -26,6 +26,24 @@ class CtrlORessourceGenerator
 
   function create(Base $f3)
   {
+    if ($f3->get('SESSION.db_name')) {
+      $host = Config::getInstance()->get('host');
+      $root = Config::getInstance()->get('root');
+      $root_passwd = Config::getInstance()->get('root_passwd');
+      $db_name = $f3->get('SESSION.db_name');
+
+      $dbh = new PDO("mysql:host=".$host, $root, $root_passwd);
+      $sql = $dbh->prepare("use `$db_name`");
+      try {
+        $sql->execute();
+        $error = true;
+      } catch (Exception $e) {
+        $error = false;
+      }
+      if ($error == true) {
+        $f3->reroute('/validation');
+      }
+    }
     $f3->set('from_backup', $f3->get('GET.from_backup'));
     echo View::instance()->render('/create.html.php');
   }
