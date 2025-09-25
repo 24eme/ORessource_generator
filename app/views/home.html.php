@@ -43,9 +43,9 @@
       <a name="accueil"></a>
       <div class="row">
         <div class="col"></div>
-        <div class="col-8 justify-content-center text-center mt-5">
-          <h1>ORessource</h1>
-          <p class="lead mb-4">Une plateforme open source et communautaire de génération d'instances pour le logiciel ORessource.</p>
+        <div class="col-10 justify-content-center text-center mt-5">
+          <h2>Hébergement du logiciel libre ORessource</h2>
+          <p class="lead mb-4 mt-3">Logiciel de caisse et de bilan écologique pour la gestion en ligne d'une ressourcerie</p>
         </div>
         <div class="col"></div>
       </div>
@@ -54,175 +54,92 @@
       </div>
     </div>
   </div>
-  <div class="bg-white shadow-lg" style="border-bottom: 1px solid #ddd">
+  <div class="bg-white shadow-lg" style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd">
     <div class="container pt-4 pb-5" style="max-width: 1050px;">
       <a name="projet"></a>
-      <h2 class="mt-4">Le projet</h2>
+      <h2 class="mt-4 mb-4">Le projet Oressource</h2>
+      <p>
+        ORessource est un logiciel libre (https://fr.wikipedia.org/wiki/Logiciel_libre) qui a été codé par @mart1ver et @darnuria (https://github.com/mart1ver/oressource) en 2014 sur une inspiration de @olive de ubuntu-fr .<br /><br />
+        Il permet de gérer une ressourcerie, actuellement il est utilisé par environ 11% des ressourceries en France (données de 2022).
+      </p>
       <div class="row">
-        Historique projet
-        <br>
-        <a href="https://github.com/mart1ver/oressource">ORessource</a>
-        <br>
-        Contact avec le recyclodrome
-        <br>
-        Le logiciel libre
-
+        <div class="col-sm-6 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <i class="bi bi-window-split"></i> Ergonomie
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Aide à la saisie</h5>
+              <p class="card-text">Saisie en un écran, détection des allergènes et addifits lors de la saisie des ingrédients, calcul simplifié des valeurs nutrionnelles. Tout au long de la saisie le résultat est visible en temps réél.<br /></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <i class="bi bi-patch-check"></i> Conforme à la législation
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Respect du réglement européens</h5>
+              <p class="card-text">Le logiciel est adapté et conçu pour respecter la mise en oeuvre prévu par la commission européenes dans le règlement (UE) <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=OJ:C_202301190">n° 2023/1190</a>.<br /></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <i class="bi bi-opencollective"></i> Open source et communautaire
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">L'open source au service de la durabilité</h5>
+              <p class="card-text">Le projet peut être utilisé sur nutri.vin directement, sur une plateforme mis à disposition par une interprofession ou une ODG, ou librement installé sur son propre serveur et nom de domaine, pour avoir la maitrîse du QR Code dans le temps.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <i class="bi bi-clock-history"></i> Pérénité
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Pérénité</h5>
+              <p class="card-text">Le projet ne dépend pas d'une seule entreprise privée et de sa viabilité économique. Il est financé par une interprofession et une entreprise coopérative. Les QRCodes déjà créés peuvent être facilement migrés sur une autre instance.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="bg-light" style="border-bottom: 1px solid #ddd">
     <div class="container pt-4 pb-5" style="max-width: 1050px;">
       <a name="fonctionnalites"></a>
-      <h2 class="mt-4">Les fonctionnalités</h2>
-      <p>Découvrir des pages du logiciel :</p>
-      <div class="row">
-        <div id="carouselPhoto" class="carousel slide col-md">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="/images/carrousel1.png" class="d-block w-100" alt="vue de la page bilan">
-            </div>
-            <div class="carousel-item">
-              <img src="/images/carrousel2.png" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="/images/carrousel3.png" class="d-block w-100" alt="">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselPhoto" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselPhoto" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        <div class="col-md">
-          <table class="table table-striped table-sm table-bordered">
-            <thead>
-              <tr>
-                <th>Fonctionnalités</th>
-                <th class="text-center col-1">ORessource</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center">
-                <td colspan="2">Gestion quotidienne</td>
-              </tr>
-              <tr>
-                <td>Grille des prix</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Bacs et chariots</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Types de poubelles</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr class="text-center">
-                <td colspan="2">Gestion et vérification</td>
-              </tr>
-              <tr>
-                <td>Vérifier les collectes</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Vérifier les sorties hors-boutique</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Vérifier les ventes</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr class="text-center">
-                <td colspan="2">Gestion des utilisateurs</td>
-              </tr>
-              <tr>
-                <td>Utilisateurs</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr class="text-center">
-                <td colspan="2">Recycleur et convention de sortie</td>
-              </tr>
-              <tr>
-                <td>Entreprises de recyclage</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Conventions avec les partenaires</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr class="text-center">
-                <td colspan="2">Personnalisation</td>
-              </tr>
-              <tr>
-                <td>Types de sorties hors-boutique</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Types de collectes</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Types d'objets collectés</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Types de déchets evacués</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Points de collecte</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Points de sortie hors-boutique</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Points de vente</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Moyens de paiment</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Localités</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr>
-                <td>Configuration de Oressource</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-              <tr class="text-center">
-                <td colspan="2">Bonus</td>
-              </tr>
-              <tr>
-                <td>ORessource ne dépend pas d'une seule entreprise privée</td>
-                <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <h2 class="mt-4 mb-3">Plateforme d'hébergement</h2>
+      <p>Nous avons mise en place cette plateforme pour vous proposer d'utiliser ce logiciel en ligne sans avoir à l'installer.</p>
+      <table class="table table-striped table-sm table-bordered">
+  <thead>
+    <tr>
+      <th class="col-6"></th>
+      <th class="text-center col-3">Auto hébergement</th>
+      <th class="text-center col-3">Hébérgé sur cette plateforme</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Backup</td>
+      <td class="text-center">A faire soi même</td>
+      <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i> Réalisé par la plateforme </td>
+    </tr>
+  </tbody>
+</table>
+    <div class="text-center mt-5">
+      <a href="/demarrer" class="btn btn-primary" >
+        Démarrer avec ORessource
+      </a>
     </div>
   </div>
-  <div style="border-bottom: 1px solid #ddd">
-    <div class="container pt-4 pb-5" style="max-width: 992px;">
-      <a name="utiliser"></a>
-      <h2 class="mb-4 text-center mt-4">Démarrer avec ORessource</h2>
-      <div class="text-center">
-        <a href="/demarrer" type="button" class="btn btn-primary" >
-          Créer
-        </a>
-      </div>
-    </div>
-  </div>
+</div>
 
-  <div class="bg-light" style="border-bottom: 1px solid #ddd">
+  <div class="bg-white" style="border-bottom: 1px solid #ddd">
     <div class="container pt-4 pb-5" style="max-width: 1050px;" >
       <h2 class="mt-4" id="quiSommesNous">Qui sommes nous ?</h2>
       <div class="row align-items-center">
@@ -230,19 +147,20 @@
           <img style="max-height: 160px" class="img-fluid" src="https://www.24eme.fr/img/24eme.svg" />
         </div>
         <div class="col-sm-10">
-          <p class="mt-4">Ce logiciel a été créé par le 24ème, une société coopérative spécialisée depuis 2010 dans le développement de logiciels libres pour des communautés de métiers et principalement dans le domaine viticole.</p>
+          <p class="mt-4">Ce plateforme est financée et gérée par le 24ème, une société coopérative spécialisée depuis 2010 dans le développement de logiciels libres pour des communautés de métiers et principalement dans le domaine viticole.</p>
           <a href="https://www.24eme.fr/" class="btn btn-link float-end">En savoir plus sur le 24ème</a>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="bg-light">
   <div class="container" style="max-width: 1050px;">
-    <footer class="text-center text-muted pt-2">
+    <footer class="text-center text-muted pt-2 pb-2">
       Logiciel libre sous licence AGPL-3.0 : <a href="https://github.com/24eme/ORessource_generator" target="_blank">voir le code source</a>
-      <br/>
-      <a href="/faq">Consulter la FAQ</a>
     </footer>
   </div>
+</div>
 </body>
 
 <script src="/js/jquery-3.7.1.min.js"></script>
