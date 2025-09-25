@@ -46,7 +46,13 @@
           <li class="breadcrumb-item active" aria-current="page">Chez moi</li>
         </ol>
       </nav>
-      page en construction
+      <div class="card">
+        <h5 class="card-header">Héberger ORessource</h5>
+          <div class="card-body text-center">
+            Pour installer ORessource en local sur votre machine, vous pouvez suivre ce PDF explicatif
+            <embed src="tuto-ressource.pdf" width="100%" height="1000px" type="application/pdf">
+          </div>
+      </div>
     </div>
   </div>
 

@@ -61,8 +61,7 @@
             <h5 class="card-title">Email: <?php echo $SESSION['emailRessourcerie'];?></h5>
             <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
             <h5 class="card-title"><a href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a></h5>
-            <a href="/create" class="btn btn-light">Retour</a>
-            <button type="submit" class="btn btn-primary float-end">Activer mon instance</button>
+            <button type="submit" class="btn btn-primary float-end mb-2">Activer mon instance</button>
           </div>
         </form>
       </div>

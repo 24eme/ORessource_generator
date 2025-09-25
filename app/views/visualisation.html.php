@@ -61,7 +61,8 @@
               <?php if($champ == "flash"){continue;}?>
               <h5 class="card-title"><?php echo $champ . ' : ' . $valeur;?></h5>
             <?php endforeach;?>
-            <a href="/create" class="btn btn-light">Retour</a>
+            <hr class="my-5">
+            <a href="/create" class="btn btn-light">Modifier</a>
             <button type="submit" class="btn btn-primary float-end">Activer mon instance</button>
           </div>
         </form>
