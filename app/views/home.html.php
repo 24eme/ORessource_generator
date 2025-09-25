@@ -20,7 +20,7 @@
       <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
         <div class="col-md-1 mb-2 mb-md-0">
           <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-            <img src="/images/logo_oressource.png" height="80" />
+            <img src="/images/logo_oressource.svg" height="80" />
           </a>
         </div>
 
@@ -40,11 +40,6 @@
   </div>
   <div class="bg-light">
     <div class="container" style="max-width: 1050px;">
-      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page">Accueil</li>
-        </ol>
-      </nav>
       <a name="accueil"></a>
       <div class="row">
         <div class="col"></div>
@@ -56,6 +51,22 @@
       </div>
       <div class="text-center mt-2">
         <img src="/images/capture_browser.png" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="bg-white shadow-lg" style="border-bottom: 1px solid #ddd">
+    <div class="container pt-4 pb-5" style="max-width: 1050px;">
+      <a name="projet"></a>
+      <h2 class="mt-4">Le projet</h2>
+      <div class="row">
+        Historique projet
+        <br>
+        <a href="https://github.com/mart1ver/oressource">ORessource</a>
+        <br>
+        Contact avec le recyclodrome
+        <br>
+        Le logiciel libre
+
       </div>
     </div>
   </div>
@@ -196,22 +207,6 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-white shadow-lg" style="border-bottom: 1px solid #ddd">
-    <div class="container pt-4 pb-5" style="max-width: 1050px;">
-      <a name="projet"></a>
-      <h2 class="mt-4">Le projet</h2>
-      <div class="row">
-        Historique projet
-        <br>
-        <a href="https://github.com/mart1ver/oressource">ORessource</a>
-        <br>
-        Contact avec le recyclodrome
-        <br>
-        Le logiciel libre
-
       </div>
     </div>
   </div>
