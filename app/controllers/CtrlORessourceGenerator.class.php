@@ -50,7 +50,7 @@ class CtrlORessourceGenerator
 
   function dataCheck(Base $f3)
   {
-    $f3->set('SESSION', $this->verifyAndCleanData($f3->get('POST')));
+    $f3->set('SESSION', $this->verifyAndCleanData($f3));
     $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
     $f3->set('SESSION.db_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
 
@@ -63,9 +63,11 @@ class CtrlORessourceGenerator
     return $f3->reroute('/visualisation');
   }
 
-  function verifyAndCleanData($data)
+  function verifyAndCleanData($f3)
   {
     $ret = array();
+    $data = $f3->get('POST');
+
     $ret['nomRessourcerie'] = htmlspecialchars($data['nomRessourcerie']);
     $ret['nomRessourcerie_base'] = Web::instance()->slug($ret['nomRessourcerie']);
     $ret['adresseRessourcerie'] = htmlspecialchars($data['adresseRessourcerie']);
@@ -75,8 +77,11 @@ class CtrlORessourceGenerator
     $ret['motDePasse'] = $data['motDePasse'];
     if (array_key_exists('from_backup', $data)) {
       $ret['from_backup'] = $data['from_backup'];
+      if ($f3->get('FILES')) {
+        move_uploaded_file($_FILES["backupInput"]["tmp_name"], $f3->get('UPLOADS') . $_FILES["backupInput"]["name"]);
+        $ret['backupInput'] = $f3->get('UPLOADS') . $f3->get('FILES.backupInput.name');
+      }
     }
-
     return $ret;
   }
 
@@ -200,7 +205,11 @@ if (! file_put_contents($config_path,
       throw new \Exception($e->getMessage(), 1);
     }
 
-    $backup = $f3->get('POST.backupInput') ?? $f3->get('PATH_ORESSOURCE').'/mysql/oressource.sql';
+    if ($f3->get('SESSION.from_backup') && $f3->get('SESSION.backupInput')) {
+      $backup = $f3->get('SESSION.backupInput');
+    } else {
+      $backup = $f3->get('PATH_ORESSOURCE').'/mysql/oressource.sql';
+    }
     if (! $this->loadDataInDatabase($f3, $backup, $f3->get('SESSION.db_name'), $user, $pass)) {
       throw new \Exception("Erreur au chargement de la sauvegarde");
     }
@@ -222,13 +231,12 @@ if (! file_put_contents($config_path,
 
     $sql = $dbh->prepare("
     INSERT INTO utilisateurs
-    (id, timestamp, niveau, nom, prenom, mail, pass, id_createur, id_last_hero, last_hero_timestamp)
+    (timestamp, niveau, nom, prenom, mail, pass, id_createur, id_last_hero, last_hero_timestamp)
     VALUES
-    (:id, :timestamp, :niveau, :nom, :prenom, :mail, :pass, :id_createur, :id_last_hero, :last_hero_timestamp)
+    (:timestamp, :niveau, :nom, :prenom, :mail, :pass, :id_createur, :id_last_hero, :last_hero_timestamp)
     ");
 
     if (! $sql->execute([
-      ':id'         => 1,
       ':timestamp' => date('Y-m-d H:i:s'),
       ':niveau'       => 'c1c2c3v1v2v3s1bighljk',
       ':nom'       => 'administrateur.ice',
