@@ -231,28 +231,7 @@ if (! file_put_contents($config_path,
     }
 
 // Si on doit ALTER la base
-//     if (! $dbh->query(file_get_contents($data))) {
-//       return false;
-//     }
-
-    $sql = $dbh->prepare("
-    INSERT INTO utilisateurs
-    (timestamp, niveau, nom, prenom, mail, pass, id_createur, id_last_hero, last_hero_timestamp)
-    VALUES
-    (:timestamp, :niveau, :nom, :prenom, :mail, :pass, :id_createur, :id_last_hero, :last_hero_timestamp)
-    ");
-
-    if (! $sql->execute([
-      ':timestamp' => date('Y-m-d H:i:s'),
-      ':niveau'       => 'c1c2c3v1v2v3s1bighljk',
-      ':nom'       => 'administrateur.ice',
-      ':prenom'     => 'oressource',
-      ':mail'      => $f3->get('SESSION.emailRessourcerie'),
-      ':pass' => md5($f3->get('SESSION.motDePasse')),
-      ':id_createur'      => 1,
-      ':id_last_hero'    => 1,
-      ':last_hero_timestamp' => date('Y-m-d H:i:s'),
-    ])) {
+    if (! $dbh->query(sprintf(file_get_contents($data), date('Y-m-d H:i:s'), 'c1c2c3v1v2v3s1bighljk', 'administrateur.ice', 'oressource', $f3->get('SESSION.emailRessourcerie'), md5($f3->get('SESSION.motDePasse')), 1, 1, date('Y-m-d H:i:s')))) {
       return false;
     }
 
