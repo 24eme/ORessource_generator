@@ -230,7 +230,6 @@ if (! file_put_contents($config_path,
       return false;
     }
 
-// Si on doit ALTER la base
     if (! $dbh->query(sprintf(file_get_contents($data), date('Y-m-d H:i:s'), 'c1c2c3v1v2v3s1bighljk', 'administrateur.ice', 'oressource', $f3->get('SESSION.emailRessourcerie'), md5($f3->get('SESSION.motDePasse')), 1, 1, date('Y-m-d H:i:s')))) {
       return false;
     }
