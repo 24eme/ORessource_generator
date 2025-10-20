@@ -60,7 +60,7 @@
             <div class="row g-3">
               <div class="col-8">
                 <label for="nomRessourcerie" class="form-label">Le nom de votre ressourcerie</label>
-                <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="Le Recyclodrome" value="<?php if (array_key_exists('nomRessourcerie', $SESSION)){echo $SESSION['nomRessourcerie'];} ?>" required>
+                <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="La Brigaille" value="<?php if (array_key_exists('nomRessourcerie', $SESSION)){echo $SESSION['nomRessourcerie'];} ?>" required>
                 <div class="invalid-feedback">
                   Nom de la ressourcerie nécessaire
                 </div>
