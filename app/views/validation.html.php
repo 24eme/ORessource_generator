@@ -56,11 +56,15 @@
       <div class="card">
         <h5 class="card-header">Rappel de vos informations de connection</h5>
         <form action="/generate" method="post">
-          <div class="card-body">
-            <h5 class="card-title">Email: <?php echo $SESSION['emailRessourcerie'];?></h5>
-            <h5 class="card-title">Mot de passe: <?php echo $SESSION['motDePasse'];?></h5>
-            <h5 class="card-title"><a href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a></h5>
-            <button type="submit" class="btn btn-primary float-end mb-2">Activer mon instance</button>
+          <div class="card-body text-center">
+            <?php if (array_key_exists('from_backup', $SESSION)):?>
+              <p>Pour vous connecter à votre instance, vous pouvez utiliser vos anciens identifiants aussi bien que le nouveau que vous venez de créer :</p>
+            <?php else: ?>
+              <p>Pour vous connecter à votre instance, utilisez l'utilisateur que vous venez de créer :</p>
+            <?php endif;?>
+            <h5 class="card-title"><i class="bi bi-envelope-at"></i>&nbsp;Email (identifiant) : <?php echo $SESSION['emailRessourcerie'];?></h5>
+            <h5 class="card-title"><i class="bi bi-key"></i>&nbsp;Mot de passe : <?php echo $SESSION['motDePasse'];?></h5>
+              <a class="btn btn-primary" href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a>
           </div>
         </form>
       </div>

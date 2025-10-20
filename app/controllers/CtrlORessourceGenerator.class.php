@@ -78,6 +78,7 @@ class CtrlORessourceGenerator
     if (array_key_exists('from_backup', $data)) {
       $ret['from_backup'] = $data['from_backup'];
       if ($f3->get('FILES')) {
+        $ret['from_backup'] = $_FILES['backupInput']['name'];
         move_uploaded_file($_FILES["backupInput"]["tmp_name"], $f3->get('UPLOADS') . $_FILES["backupInput"]["name"]);
         $ret['backupInput'] = $f3->get('UPLOADS') . $f3->get('FILES.backupInput.name');
       }

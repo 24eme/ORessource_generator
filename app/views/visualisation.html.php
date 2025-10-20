@@ -53,15 +53,18 @@
         </div>
       <?php endforeach;?>
       <div class="card">
-        <h5 class="card-header">Récapitulatif de votre instance</h5>
+        <h5 class="card-header">Récapitulatif de la saisie</h5>
         <form action="/generate" method="post">
           <div class="card-body">
-            <?php foreach ($SESSION as $champ => $valeur): ?>
-              <?php if($champ == "flash"){continue;}?>
-              <h5 class="card-title"><?php echo $champ . ' : ' . $valeur;?></h5>
-            <?php endforeach;?>
-            <hr class="my-5">
-            <a href="/create" class="btn btn-light">Modifier</a>
+            <h5 class="card-title"><i class="bi bi-tag"></i>&nbsp;Nom de votre ressourcerie : <?php echo $SESSION['nomRessourcerie'];?></h5>
+            <h5 class="card-title"><i class="bi bi-house"></i>&nbsp;Adresse de votre ressourcerie : <?php echo $SESSION['adresseRessourcerie'].', '.$SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
+            <h5 class="card-title"><i class="bi bi-envelope-at"></i>&nbsp;Email (identifiant) : <?php echo $SESSION['emailRessourcerie'];?></h5>
+            <h5 class="card-title"><i class="bi bi-key"></i>&nbsp;Mot de passe : <?php echo $SESSION['motDePasse'];?></h5>
+            <?php if (array_key_exists('from_backup', $SESSION)): ?>
+              <h5 class="card-title"><i class="bi bi-floppy"></i>&nbsp;Votre fichier de sauvegarde : <?php echo $SESSION['from_backup'];?></h5>
+            <?php endif;?>
+            <hr>
+            <a href="/create<?php if (array_key_exists('from_backup', $SESSION)){echo '?from_backup=true';}?>" class="btn btn-light">Modifier</a>
             <button type="submit" class="btn btn-primary float-end">Activer mon instance</button>
           </div>
         </form>
