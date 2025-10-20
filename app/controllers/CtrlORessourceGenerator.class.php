@@ -208,7 +208,7 @@ if (! file_put_contents($config_path,
     if ($f3->get('SESSION.from_backup') && $f3->get('SESSION.backupInput')) {
       $backup = $f3->get('SESSION.backupInput');
     } else {
-      $backup = $f3->get('PATH_ORESSOURCE').'/mysql/oressource.sql';
+      $backup = $f3->get('ROOT').'/data/oressource_schema.sql';
     }
     if (! $this->loadDataInDatabase($f3, $backup, $f3->get('SESSION.db_name'), $user, $pass)) {
       throw new \Exception("Erreur au chargement de la sauvegarde");
@@ -222,12 +222,18 @@ if (! file_put_contents($config_path,
     $root_passwd = Config::getInstance()->get('root_passwd');
     $dsn = "mysql:dbname=".$db_name.";host=".$host;
     $dbh = new PDO($dsn, $root, $root_passwd);
+    $data = $f3->get('ROOT').'/data/oressource_data.sql';
 
     $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE'];
     $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie')];
     if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
       return false;
     }
+
+// Si on doit ALTER la base
+//     if (! $dbh->query(file_get_contents($data))) {
+//       return false;
+//     }
 
     $sql = $dbh->prepare("
     INSERT INTO utilisateurs
