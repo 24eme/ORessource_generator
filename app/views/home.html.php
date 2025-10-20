@@ -26,9 +26,8 @@
 
         <ul class="nav col-md-8 col-md-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-          <li><a href="#fonctionnalites" class="nav-link px-2">Fonctionnalités</a></li>
           <li><a href="#projet" class="nav-link px-2">Le projet</a></li>
-          <li><a href="#utiliser" class="nav-link px-2">Utiliser ORessource</a></li>
+          <li><a href="#fonctionnalites" class="nav-link px-2">Fonctionnalités</a></li>
           <li><a href="#quiSommesNous" class="nav-link px-2">Qui sommes nous ?</a></li>
         </ul>
 
