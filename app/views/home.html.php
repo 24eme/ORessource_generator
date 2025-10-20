@@ -58,8 +58,8 @@
       <a name="projet"></a>
       <h2 class="mt-4 mb-4">Le projet Oressource</h2>
       <p>
-        ORessource est un logiciel libre (https://fr.wikipedia.org/wiki/Logiciel_libre) qui a été codé par @mart1ver et @darnuria (https://github.com/mart1ver/oressource) en 2014 sur une inspiration de @olive de ubuntu-fr .<br /><br />
-        Il permet de gérer une ressourcerie, actuellement il est utilisé par environ 11% des ressourceries en France (données de 2022).
+        ORessource est un <a href="https://fr.wikipedia.org/wiki/Logiciel_libre">logiciel libre</a> qui a été développé par <a href="https://github.com/mart1ver/oressource"> @mart1ver et @darnuria</a> en 2014 sur une inspiration de <a href="https://doc.ubuntu-fr.org/utilisateurs/olive">@olive de ubuntu-fr</a> .<br /><br />
+        Il permet de gérer une ressourcerie et est utilisé par environ 11% des ressourceries en France (données de 2022).
       </p>
       <div class="row">
         <div class="col-sm-6 mt-4">
@@ -68,19 +68,19 @@
               <i class="bi bi-window-split"></i> Ergonomie
             </div>
             <div class="card-body">
-              <h5 class="card-title">Aide à la saisie</h5>
-              <p class="card-text">Saisie en un écran, détection des allergènes et addifits lors de la saisie des ingrédients, calcul simplifié des valeurs nutrionnelles. Tout au long de la saisie le résultat est visible en temps réél.<br /></p>
+              <h5 class="card-title">Simplicité de saisie</h5>
+              <p class="card-text">Une utilisation précise, répondant à des besoins directs. Pas de chargements ou de pages inutiles.<br /></p>
             </div>
           </div>
         </div>
         <div class="col-sm-6 mt-4">
           <div class="card shadow-sm">
             <div class="card-header">
-              <i class="bi bi-patch-check"></i> Conforme à la législation
+              <i class="bi bi-patch-check"></i> Robustesse
             </div>
             <div class="card-body">
-              <h5 class="card-title">Respect du réglement européens</h5>
-              <p class="card-text">Le logiciel est adapté et conçu pour respecter la mise en oeuvre prévu par la commission européenes dans le règlement (UE) <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=OJ:C_202301190">n° 2023/1190</a>.<br /></p>
+              <h5 class="card-title">Un logiciel ayant fait ses preuves</h5>
+              <p class="card-text">ORessource existe depuis plus de 10 ans, de nombreuses ressourceries l'utilise (~ 11% des ressourceries en 2022 selon le RNRR) </p>
             </div>
           </div>
         </div>
@@ -91,18 +91,18 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">L'open source au service de la durabilité</h5>
-              <p class="card-text">Le projet peut être utilisé sur nutri.vin directement, sur une plateforme mis à disposition par une interprofession ou une ODG, ou librement installé sur son propre serveur et nom de domaine, pour avoir la maitrîse du QR Code dans le temps.</p>
+              <p class="card-text">Le projet peut être utilisé sur ce site directement ou librement installé sur son propre serveur et nom de domaine.</p>
             </div>
           </div>
         </div>
         <div class="col-sm-6 mt-4">
           <div class="card shadow-sm">
             <div class="card-header">
-              <i class="bi bi-clock-history"></i> Pérénité
+              <i class="bi bi-clock-history"></i> Pérénnité
             </div>
             <div class="card-body">
-              <h5 class="card-title">Pérénité</h5>
-              <p class="card-text">Le projet ne dépend pas d'une seule entreprise privée et de sa viabilité économique. Il est financé par une interprofession et une entreprise coopérative. Les QRCodes déjà créés peuvent être facilement migrés sur une autre instance.</p>
+              <h5 class="card-title">Pérénnité</h5>
+              <p class="card-text">Le projet ne dépend pas d'une seule entreprise privée et de sa viabilité économique. Il a pour but d'être financé par une communauté et une entreprise coopérative.</p>
             </div>
           </div>
         </div>
@@ -119,12 +119,12 @@
     <tr>
       <th class="col-6"></th>
       <th class="text-center col-3">Auto hébergement</th>
-      <th class="text-center col-3">Hébérgé sur cette plateforme</th>
+      <th class="text-center col-3">Hébergé sur cette plateforme</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Backup</td>
+      <td>Sauvegarde automatique</td>
       <td class="text-center">A faire soi même</td>
       <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i> Réalisé par la plateforme </td>
     </tr>
