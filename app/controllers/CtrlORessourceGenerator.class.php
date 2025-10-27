@@ -11,17 +11,20 @@ class CtrlORessourceGenerator
 
   function demarrer(Base $f3)
   {
-    echo View::instance()->render('/demarrer.html.php');
+    $f3->set('content', 'demarrer.html.php');
+    echo View::instance()->render('/layout.html.php');
   }
 
   function selfhost(Base $f3)
   {
-    echo View::instance()->render('/selfhost.html.php');
+    $f3->set('content', 'selfhost.html.php');
+    echo View::instance()->render('/layout.html.php');
   }
 
   function webhost(Base $f3)
   {
-    echo View::instance()->render('/webhost.html.php');
+    $f3->set('content', 'webhost.html.php');
+    echo View::instance()->render('/layout.html.php');
   }
 
   function create(Base $f3)
@@ -45,7 +48,8 @@ class CtrlORessourceGenerator
       }
     }
     $f3->set('from_backup', $f3->get('GET.from_backup'));
-    echo View::instance()->render('/create.html.php');
+    $f3->set('content', 'create.html.php');
+    echo View::instance()->render('/layout.html.php');
   }
 
   function dataCheck(Base $f3)
@@ -121,7 +125,8 @@ class CtrlORessourceGenerator
 
   function visualisation(Base $f3)
   {
-    echo View::instance()->render('/visualisation.html.php');
+    $f3->set('content', 'visualisation.html.php');
+    echo View::instance()->render('/layout.html.php');
   }
 
   function generate(Base $f3)
@@ -240,6 +245,7 @@ if (! file_put_contents($config_path,
 
   function validation(Base $f3)
   {
-    echo View::instance()->render('/validation.html.php');
+    $f3->set('content', 'validation.html.php');
+    echo View::instance()->render('/layout.html.php');
   }
 }
