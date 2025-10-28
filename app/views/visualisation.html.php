@@ -22,7 +22,7 @@
             <h5 class="card-title"><i class="bi bi-house"></i>&nbsp;Adresse de votre ressourcerie : <?php echo $SESSION['adresseRessourcerie'].', '.$SESSION['codePostal'].' '.$SESSION['ville'];?></h5>
             <h5 class="card-title"><i class="bi bi-envelope-at"></i>&nbsp;Email (identifiant) : <?php echo $SESSION['emailRessourcerie'];?></h5>
             <h5 class="card-title"><i class="bi bi-key"></i>&nbsp;Mot de passe : <?php echo $SESSION['motDePasse'];?></h5>
-            <?php if (array_key_exists('from_backup', $SESSION)): ?>
+            <?php if (array_key_exists('from_backup', $SESSION) && $SESSION['from_backup']): ?>
               <h5 class="card-title"><i class="bi bi-floppy"></i>&nbsp;Votre fichier de sauvegarde : <?php echo $SESSION['from_backup'];?></h5>
             <?php endif;?>
             <hr>

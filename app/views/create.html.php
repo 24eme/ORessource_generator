@@ -17,7 +17,7 @@
               <?php echo $message['text']; ?>
             </div>
           <?php endforeach;?>
-          <form class="needs-validation" action="/dataCheck" method="post" enctype="multipart/form-data">
+          <form id="formInfo" class="needs-validation" action="/dataCheck" method="post" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-8">
                 <label for="nomRessourcerie" class="form-label">Le nom de votre ressourcerie</label>
@@ -72,21 +72,19 @@
                   </div>
                 </div>
               </div>
-              <?php if($from_backup):?>
                 <div class="mt-4 col-12">
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="sauvegarde" checked disabled>
+                    <input class="form-check-input" type="checkbox" role="switch" id="sauvegarde" <?php if (array_key_exists('from_backup', $_GET) && $_GET['from_backup'] == true) {echo "checked";} ?>>
                     <label class="form-check-label" for="sauvegarde">Démarrer à partir d'une sauvegarde</label>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div id="divFileInput" class="col-6" <?php if (! (array_key_exists('from_backup', $_GET) && $_GET['from_backup'] == true)) {echo "hidden";} ?>>
                   <div class="">
-                    <input class="form-control" type="file" id="fileInput" name="backupInput" required>
+                    <input class="form-control" type="file" id="fileInput" name="backupInput">
                   </div>
                 </div>
-                <input type="hidden" name="from_backup" value="true">
-              <?php endif;?>
+                <input id="fromBackup" type="hidden" name="from_backup" value="">
 
             </div>
             <hr>
@@ -98,3 +96,27 @@
         <div class="col"></div>
       </div>
     </div>
+
+    <script>
+      document.getElementById("sauvegarde").addEventListener("click", function (e) {
+        var divFileInput = document.getElementById("divFileInput");
+        if (e.currentTarget.checked == true) {
+          divFileInput.hidden = false;
+          document.getElementById("fileInput").required = true;
+        } else {
+          divFileInput.hidden = true;
+          document.getElementById("fileInput").required = false;
+        }
+      });
+
+      document.getElementById("formInfo").addEventListener("submit", function (e) {
+
+        if (document.getElementById("sauvegarde").checked == true) {
+          document.getElementById("fromBackup").value = true;
+        } else {
+          console.log("beip");
+          document.getElementById("fromBackup").value = false;
+        }
+      });
+
+    </script>

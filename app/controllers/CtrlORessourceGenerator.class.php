@@ -54,11 +54,10 @@ class CtrlORessourceGenerator
 
   function dataCheck(Base $f3)
   {
-    $f3->set('SESSION', $this->verifyAndCleanData($f3));
-    $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
-    $f3->set('SESSION.db_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
-
     try {
+      $f3->set('SESSION', $this->verifyAndCleanData($f3));
+      $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
+      $f3->set('SESSION.db_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
       $this->verifyDatabaseAndFolder($f3);
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
@@ -71,7 +70,6 @@ class CtrlORessourceGenerator
   {
     $ret = array();
     $data = $f3->get('POST');
-
     $ret['nomRessourcerie'] = htmlspecialchars($data['nomRessourcerie']);
     $ret['nomRessourcerie_base'] = Web::instance()->slug($ret['nomRessourcerie']);
     $ret['adresseRessourcerie'] = htmlspecialchars($data['adresseRessourcerie']);
@@ -79,13 +77,13 @@ class CtrlORessourceGenerator
     $ret['ville'] = htmlspecialchars($data['ville']);
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
-    if (array_key_exists('from_backup', $data)) {
-      $ret['from_backup'] = $data['from_backup'];
-      if ($f3->get('FILES')) {
-        $ret['from_backup'] = $_FILES['backupInput']['name'];
-        move_uploaded_file($_FILES["backupInput"]["tmp_name"], $f3->get('UPLOADS') . $_FILES["backupInput"]["name"]);
-        $ret['backupInput'] = $f3->get('UPLOADS') . $f3->get('FILES.backupInput.name');
+    if ($_FILES['backupInput']['name']) {
+      if (pathinfo($_FILES['backupInput']['name'], PATHINFO_EXTENSION) != 'sql') {
+        throw new \Exception("Le fichier de sauvegarde déposé n'est pas un fichier sql", 1);
       }
+      $ret['from_backup'] = $_FILES['backupInput']['name'];
+      move_uploaded_file($_FILES["backupInput"]["tmp_name"], $f3->get('UPLOADS') . $_FILES["backupInput"]["name"]);
+      $ret['backupInput'] = $f3->get('UPLOADS') . $f3->get('FILES.backupInput.name');
     }
     return $ret;
   }
