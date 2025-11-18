@@ -168,6 +168,9 @@ class CtrlORessourceGenerator
 
   function createConfig($f3, $data)
   {
+    if (! is_dir($f3->get('PATH_ORESSOURCE').'/config')) {
+      mkdir($f3->get('PATH_ORESSOURCE').'/config');
+    }
     $config_path = $f3->get('PATH_ORESSOURCE').'/config/config_' . $f3->get('SESSION.db_name') . '.php';
 
 if (! file_put_contents($config_path,
