@@ -48,12 +48,13 @@
         </div>
         <div class="col"></div>
       </div>
-      <div class="text-center mt-2">
-        <img src="/images/capture_browser.png" class="img-fluid">
+      <div class="text-center">
+        <img src="/images/capture_browser.png" class="img-fluid" style="transform: rotate(359deg); ">
       </div>
     </div>
   </div>
-  <div class="bg-white shadow-lg" style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd">
+  <div class="bg-white shadow-lg" style="border-bottom: 1px solid #ddd; z-index: -1; margin-top: -10px;">
+        <div class="bg-white position-absolute w-100" style="height: 20px; border-top: 1px solid #ddd;"></div>
     <div class="container pt-4 pb-5" style="max-width: 1050px;">
       <a name="projet"></a>
       <h2 class="mt-4 mb-4">Le projet Oressource</h2>
