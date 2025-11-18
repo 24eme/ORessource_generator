@@ -19,7 +19,7 @@
             <div class="row g-3">
               <div class="col-8">
                 <label for="nomRessourcerie" class="form-label">Le nom de votre ressourcerie</label>
-                <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="La Brigaille" value="<?php if (array_key_exists('nomRessourcerie', $SESSION)){echo $SESSION['nomRessourcerie'];} ?>" required>
+                <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="Ma ressourcerie" value="<?php if (array_key_exists('nomRessourcerie', $SESSION)){echo $SESSION['nomRessourcerie'];} ?>" required>
                 <div class="invalid-feedback">
                   Nom de la ressourcerie nécessaire
                 </div>
@@ -27,7 +27,7 @@
 
               <div class="col-8">
                 <label for="adresseRessourcerie" class="form-label">Adresse de votre ressourcerie</label>
-                <input type="text" class="form-control" id="adresseRessourcerie" name="adresseRessourcerie" placeholder="47 Rue d'Aubagne" value="<?php if (array_key_exists('adresseRessourcerie', $SESSION)){echo $SESSION['adresseRessourcerie'];} ?>" required>
+                <input type="text" class="form-control" id="adresseRessourcerie" name="adresseRessourcerie" placeholder="24 rue du zéro déchet" value="<?php if (array_key_exists('adresseRessourcerie', $SESSION)){echo $SESSION['adresseRessourcerie'];} ?>" required>
                 <div class="invalid-feedback">
                   Adresse nécessaire
                 </div>
