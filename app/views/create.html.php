@@ -1,5 +1,3 @@
-
-    <div class="container" style="max-width: 1050px;">
       <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb" class="mt-2">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Accueil</a></li>
@@ -9,7 +7,7 @@
         </ol>
       </nav>
       <a name="accueil"></a>
-        <div id="mainInfo" class="card">
+        <div id="mainInfo" class="card mt-4 shadow-sm">
         <h5 class="card-header">Informations de la ressourcerie</h5>
           <div class="card-body">
           <?php foreach(\Flash::instance()->getMessages() as $message): ?>
@@ -62,8 +60,18 @@
               </div>
               </div>
 
-              <div class="col-8 mb-4">
+              <div class="col-8 mb-2">
                 <label for="motDePasse" class="form-label">Mot de passe administrateur.ice</label>
+                <div class="input-group has-validation">
+                  <input type="password" class="form-control" id="motDePasse" name="motDePasse" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Votre mot de passe est nécessaire.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-8 mb-2">
+                <label for="motDePasse" class="form-label">Confirmation du mot de passe administrateur.ice</label>
                 <div class="input-group has-validation">
                   <input type="password" class="form-control" id="motDePasse" name="motDePasse" placeholder="" required>
                   <div class="invalid-feedback">
@@ -90,10 +98,8 @@
                     <button class="btn btn-primary btn-lg float-end" type="submit">Valider mes informations</button>
                 </div>
             </div>
-        </form>
-            </div>
-        <div class="col"></div>
-    </div>
+            </form>
+        </div>
 
     <script>
       document.getElementById("sauvegarde").addEventListener("click", function (e) {
