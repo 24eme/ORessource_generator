@@ -176,7 +176,7 @@ class CtrlORessourceGenerator
     if (! is_dir($config_path)) {
         mkdir($config_path);
     }
-    $config_path = .'/config/config_' . $f3->get('SESSION.db_name') . '.php';
+    $config_path .= '/config/config_' . $f3->get('SESSION.db_name') . '.php';
 
     if (! file_put_contents($config_path, "<?php\n\n")) {
         throw new Exception("Erreur au chargement initial du fichier de config");
