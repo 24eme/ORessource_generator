@@ -1,11 +1,11 @@
 <?php
 
 $config = [
-  'host' => 'localhost',
-  'root' => "root",
-  'root_passwd' => "rootpass",
-  'user'=> 'user',
-  'pass' => 'pass',
-  'db' => "newdb",
+  'db_host' => 'localhost',
+  //'db_port' => '3306',
+  'db_root' => "root",
+  'db_root_passwd' => "rootpass",
   'oressource_path' => "../../oressource/",
+  //'mail_from' => 'contact@example.org',
+  //'urlbase' => "https://example.org/",
 ];

@@ -63,4 +63,53 @@ class Config
     }
     return $this->config['urlbase'];
   }
+
+  public function getDBRoot() {
+      if (isset($this->config['db_root'])) {
+          return $this->config['db_root'];
+      }
+      if (isset($this->config['root'])) {
+          return $this->config['root'];
+      }
+      throw new \LogicException('No username admin db acces');
+  }
+
+  public function getDBRootPassword() {
+      if (isset($this->config['db_root_passwd'])) {
+          return $this->config['db_root_passwd'];
+      }
+      if (isset($this->config['root_passwd'])) {
+          return $this->config['root_passwd'];
+      }
+      throw new \LogicException('No password admin db acces');
+  }
+
+  public function getDBHost() {
+      if (isset($this->config['db_host'])) {
+          return $this->config['db_host'];
+      }
+      return 'localhost';
+  }
+
+  public function getDBPort() {
+      if (isset($this->config['db_port'])) {
+          return $this->config['db_port'];
+      }
+      return '3306';
+  }
+
+  public function getMailFrom() {
+      if (isset($this->config['mail_from'])) {
+          return $this->config['mail_from'];
+      }
+      return null;
+  }
+
+  public function getORessourcePath() {
+      if (isset($this->config['oressource_path'])) {
+          return $this->config['oressource_path'];
+      }
+      throw new \LogicException('No oressource path configured');
+  }
+
 }

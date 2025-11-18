@@ -27,22 +27,36 @@ class CtrlORessourceGenerator
     echo View::instance()->render('/layout.html.php');
   }
 
+  private function getDBH(Base $f3, $dbname = null, $user = null, $passwd = null) {
+      $host = Config::getInstance()->getDBHost();
+      $port = Config::getInstance()->getDBPort();
+      if (!$user) {
+          $user = Config::getInstance()->getDBRoot();
+      }
+      if (!$passwd) {
+          $passwd = Config::getInstance()->getDBRootPassword();
+      }
+      $pdo_schema = "mysql:host=".$host.";port=".$port;
+      if ($dbname) {
+          $pdo_schema .= ';dbname='.$dbname;
+      }
+      $dbh = new PDO($pdo_schema, $user, $passwd);
+      return $dbh;
+  }
+
   function create(Base $f3)
   {
-    if ($f3->get('SESSION.db_name')) {
-      $host = Config::getInstance()->get('host');
-      $root = Config::getInstance()->get('root');
-      $root_passwd = Config::getInstance()->get('root_passwd');
-      $db_name = $f3->get('SESSION.db_name');
 
-      $dbh = new PDO("mysql:host=".$host, $root, $root_passwd);
-      $sql = $dbh->prepare("use `$db_name`");
-      try {
+    $dbh = $this->getDBH($f3);
+    $db_name = $f3->get('SESSION.db_name');
+    $sql = $dbh->prepare("use `$db_name`");
+    try {
         $sql->execute();
         $error = true;
-      } catch (Exception $e) {
+    } catch (Exception $e) {
         $error = false;
-      }
+    }
+    if ($db_name) {
       if ($error == true) {
         $f3->reroute('/validation');
       }
@@ -90,20 +104,13 @@ class CtrlORessourceGenerator
 
   function verifyDatabaseAndFolder($f3)
   {
-    $host = Config::getInstance()->get('host');
-    $root = Config::getInstance()->get('root');
-    $root_passwd = Config::getInstance()->get('root_passwd');
     $db_name = $f3->get('SESSION.db_name');
-
-    $dbh = new PDO("mysql:host=".$host, $root, $root_passwd);
-    $sql = $dbh->prepare("use `$db_name`");
     try {
-      $sql->execute();
-      $error = true;
+        $dbh = $this->getDBH($f3, $db_name);
     } catch (Exception $e) {
-      $error = false;
+        $dbh = null;
     }
-    if ($error == true) {
+    if ($dbh) {
       throw new \Exception("Une base de donnée existe déjà pour cette ressourcerie", 1);
     }
 
@@ -111,7 +118,7 @@ class CtrlORessourceGenerator
       throw new \Exception("Une instance existe déjà pour cette ressourcerie", 1);
 
     }
-    if (! is_dir($f3->get('PATH_ORESSOURCE'))) {
+    if (! is_dir(Config::getInstance()->getORessourcePath())) {
       throw new \Exception("Le dossier ORessource est introuvable", 1);
     }
   }
@@ -129,8 +136,8 @@ class CtrlORessourceGenerator
 
   function generate(Base $f3)
   {
-    $data['host'] = '$host = "localhost";';
-    $data['port'] = '$port = "3306";';
+    $data['host'] = '$host = "'.Config::getInstance()->getDBHost().'";';
+    $data['port'] = '$port = "'.Config::getInstance()->getDBPort().'";';
     $data['base'] = '$base = "' . $f3->get('SESSION.db_name').'";';
     $data['user'] = '$user = "' . $f3->get('SESSION.db_name').'";';
     $pass = md5(uniqid(date('dmY').$f3->get('SESSION.db_name').rand(0, 10000)));
@@ -141,22 +148,19 @@ class CtrlORessourceGenerator
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
       $this->createConfig($f3, $data);
-      $this->createDatabase($f3, $pass);
-      $message = '
-      <html>
-        <body>
-        </body>
-      </html>
-      ';
-      $headers = array(
-        'From' => 'contact@24eme.fr',
-        'Reply-To' => 'contact@24eme.fr',
-        'X-Mailer' => 'PHP/'.phpversion(),
-        'MIME-Version' => '1.0',
-        'Content-type' => 'text/html; charset=iso-8859-1'
-      );
-      if (! mail('tale-fau@24eme.fr', "Vos informations de connexion", $message, $headers)) {
-        throw new \Exception("Erreur à l'envoi du mail de confirmation");
+      $this->createDatabase($f3, $f3->get('SESSION.db_name'), $pass);
+      if (Config::getInstance()->getMailFrom()) {
+          $message = "<html><body></body></html>";
+          $headers = array(
+            'From' => Config::getInstance()->getMailFrom(),
+            'Reply-To' => Config::getInstance()->getMailFrom(),
+            'X-Mailer' => 'PHP/'.phpversion(),
+            'MIME-Version' => '1.0',
+            'Content-type' => 'text/html; charset=iso-8859-1'
+          );
+          if (! mail('tale-fau@24eme.fr', "Vos informations de connexion", $message, $headers)) {
+            throw new \Exception("Erreur à l'envoi du mail de confirmation");
+          }
       }
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
@@ -170,44 +174,32 @@ class CtrlORessourceGenerator
   {
     $config_path = $f3->get('PATH_ORESSOURCE').'/config/config_' . $f3->get('SESSION.db_name') . '.php';
 
-if (! file_put_contents($config_path,
-"<?php
-
-"
-   )) {
-     throw new Exception("Erreur au chargement initial du fichier de config");
-     return ;
-   }
-  foreach($data as $value) {
-    if (! file_put_contents($config_path, $value."\n", FILE_APPEND)) {
+    if (! file_put_contents($config_path, "<?php\n\n")) {
+        throw new Exception("Erreur au chargement initial du fichier de config");
+        return ;
+    }
+    foreach($data as $value) {
+      if (! file_put_contents($config_path, $value."\n", FILE_APPEND)) {
         throw new Exception("Erreur au chargement des info de l'instance dans le fichier de config");
         return ;
       }
     }
   }
 
-  function createDatabase($f3, $pass)
+  function createDatabase($f3, $db_name, $pass)
   {
-    $host = Config::getInstance()->get('host');
-    $root = Config::getInstance()->get('root');
-    $root_passwd = Config::getInstance()->get('root_passwd');
-    $db_name = $f3->get('SESSION.db_name');
     $user = $db_name;
 
-    try {
-      $dbh = new PDO("mysql:host=".$host, $root, $root_passwd);
+    $dbh = $this->getDBH($f3);
 
-      $sql = $dbh->prepare("CREATE DATABASE `$db_name`");
-      $sql->execute();
+    $sql = $dbh->prepare("CREATE DATABASE `$db_name`");
+    $sql->execute();
 
-      $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
-      $sql->execute(array(':user' => $user, ':pass' => $pass));
+    $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
+    $sql->execute(array(':user' => $user, ':pass' => $pass));
 
-      $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
-      $sql->execute(array(':user' => $user, ':pass' => $pass));
-    } catch (PDOException $e) {
-      throw new \Exception($e->getMessage(), 1);
-    }
+    $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
+    $sql->execute(array(':user' => $user, ':pass' => $pass));
 
     if ($f3->get('SESSION.from_backup') && $f3->get('SESSION.backupInput')) {
       $backup = $f3->get('SESSION.backupInput');
@@ -221,12 +213,7 @@ if (! file_put_contents($config_path,
 
   function loadDataInDatabase($f3, $backup, $db_name, $user, $pass)
   {
-    $host = Config::getInstance()->get('host');
-    $root = Config::getInstance()->get('root');
-    $root_passwd = Config::getInstance()->get('root_passwd');
-    $dsn = "mysql:dbname=".$db_name.";host=".$host;
-    $dbh = new PDO($dsn, $root, $root_passwd);
-    $data = $f3->get('ROOT').'/data/oressource_data.sql';
+    $dbh = $this->getDBH($f3);
 
     $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE'];
     $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie')];
