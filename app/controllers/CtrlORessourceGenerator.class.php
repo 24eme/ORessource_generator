@@ -221,7 +221,8 @@ class CtrlORessourceGenerator
       return false;
     }
 
-    if (! $dbh->query(sprintf(file_get_contents($data), date('Y-m-d H:i:s'), 'c1c2c3v1v2v3s1bighljk', 'administrateur.ice', 'oressource', $f3->get('SESSION.emailRessourcerie'), md5($f3->get('SESSION.motDePasse')), 1, 1, date('Y-m-d H:i:s')))) {
+    $sql_user = "INSERT INTO `utilisateurs` (`timestamp`, `niveau`, `nom`, `prenom`, `mail`, `pass`, `id_createur`, `id_last_hero`, `last_hero_timestamp`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s');";
+    if (! $dbh->query(sprintf($sql_user, date('Y-m-d H:i:s'), 'c1c2c3v1v2v3s1bighljk', 'administrateur.ice', 'oressource', $f3->get('SESSION.emailRessourcerie'), md5($f3->get('SESSION.motDePasse')), 1, 1, date('Y-m-d H:i:s')))) {
       return false;
     }
 
