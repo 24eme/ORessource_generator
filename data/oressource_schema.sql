@@ -87,6 +87,9 @@ CREATE TABLE `conventions_sorties` (
 
 LOCK TABLES `conventions_sorties` WRITE;
 /*!40000 ALTER TABLE `conventions_sorties` DISABLE KEYS */;
+INSERT INTO `conventions_sorties` VALUES
+(1,'DATE_CREATION','REFASHION / MAGREG','Convention TLC','#204a87',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','GILBERT','Revente Culture','#fce94f',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `conventions_sorties` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +138,8 @@ CREATE TABLE `description_structure` (
 
 LOCK TABLES `description_structure` WRITE;
 /*!40000 ALTER TABLE `description_structure` DISABLE KEYS */;
-INSERT INTO `description_structure` VALUES (1,30,'NOM_RESSOURCERIE','ADRESSE_RESSOURCERIE','Description','000 000 0000','XX XX XX XX XX','MAIL_RESSOURCERIE',1,'',10,0,1,1,'',1234,1,1,30,1,1,1,1,1,1,1,1);
+INSERT INTO `description_structure` VALUES
+(1,30,'NOM_RESSOURCERIE','ADRESSE_RESSOURCERIE','Description','000 000 0000','XX XX XX XX XX','MAIL_RESSOURCERIE','','',10,0,1,1,'',1234,1,1,50,1,1,1,1,1,1,1,1);
 /*!40000 ALTER TABLE `description_structure` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,6 +176,11 @@ CREATE TABLE `filieres_sortie` (
 
 LOCK TABLES `filieres_sortie` WRITE;
 /*!40000 ALTER TABLE `filieres_sortie` DISABLE KEYS */;
+INSERT INTO `filieres_sortie` VALUES
+(1,'DATE_CREATION','Derichebourg','','#888a85','Ferrailleur',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','Gibert','','#e9b96e','Livre',0,1,1,'DATE_CREATION'),
+(3,'DATE_CREATION','Eco-Maison','','#8f5902','Mobilier',0,1,1,'DATE_CREATION'),
+(4,'DATE_CREATION','PURFER-DERICHEBOURG','','#000000','Ferailleur',0,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `filieres_sortie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,6 +219,46 @@ CREATE TABLE `grille_objets` (
 
 LOCK TABLES `grille_objets` WRITE;
 /*!40000 ALTER TABLE `grille_objets` DISABLE KEYS */;
+INSERT INTO `grille_objets` VALUES
+(1,'DATE_CREATION','CD / DVD / Vynil / VHS / K7','audio',7,1,1.00,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','LIVRE','papier',7,1,1.00,1,1,'DATE_CREATION'),
+(6,'DATE_CREATION','CARTE POSTALE','carton',7,1,0.00,1,1,'DATE_CREATION'),
+(9,'DATE_CREATION','H Débardeurs/T-shirt court','T-shirt / Débardeurs',1,1,2.00,1,1,'DATE_CREATION'),
+(10,'DATE_CREATION','H Chemise/gilet/haut manche longue','Chemisier,Tuniques,Polo',1,1,3.00,1,1,'DATE_CREATION'),
+(11,'DATE_CREATION','H Epais : Pullover / Sweat','Chaud, épais ...',1,1,4.00,1,1,'DATE_CREATION'),
+(12,'DATE_CREATION','H Vestes / Ensemble','.',1,1,5.00,1,1,'DATE_CREATION'),
+(13,'DATE_CREATION','H Manteaux','.',1,1,10.00,1,1,'DATE_CREATION'),
+(15,'DATE_CREATION','SV Culotte / chaussettes / collants','.',1,1,0.00,1,1,'DATE_CREATION'),
+(16,'DATE_CREATION','B Pantalon/Jeans/Jupe/Short','.',1,1,3.00,1,1,'DATE_CREATION'),
+(17,'DATE_CREATION','HB Robes/Salopettes','.',1,1,3.00,1,1,'DATE_CREATION'),
+(20,'DATE_CREATION','B Jogging/legging/pyjama','.',1,1,2.00,1,1,'DATE_CREATION'),
+(21,'DATE_CREATION','A Foulard/Couvre-chef/Gants/Ceintures/Cravate/Echarpe','.',1,1,2.00,1,1,'DATE_CREATION'),
+(22,'DATE_CREATION','A Chaussures','.',1,1,3.00,1,1,'DATE_CREATION'),
+(25,'DATE_CREATION','L Draps/Serviettes de bain/Coussins','.',1,1,2.00,1,1,'DATE_CREATION'),
+(26,'DATE_CREATION','L Taies d&#39;oreillers/Serviette de table/Torchons','.',1,1,0.00,1,1,'DATE_CREATION'),
+(29,'DATE_CREATION','L Couettes/Rideaux(paire)','.',1,1,5.00,1,1,'DATE_CREATION'),
+(34,'DATE_CREATION','Ordinateur',' ',5,1,50.00,1,1,'DATE_CREATION'),
+(35,'DATE_CREATION','Cable',' ',5,1,1.00,1,1,'DATE_CREATION'),
+(40,'DATE_CREATION','Assiette',' ',4,1,0.00,1,1,'DATE_CREATION'),
+(41,'DATE_CREATION','Verre / petite tasse',' ',4,1,0.00,1,1,'DATE_CREATION'),
+(42,'DATE_CREATION','Mugs / grande tasse',' ',4,1,1.00,1,1,'DATE_CREATION'),
+(49,'DATE_CREATION','Couvert de table','autour d&#39;une assiette',4,1,0.00,1,1,'DATE_CREATION'),
+(53,'DATE_CREATION','Clavier',' ',5,1,2.00,1,1,'DATE_CREATION'),
+(63,'DATE_CREATION','Catégorie 1',' ptit',2,1,5.00,1,1,'DATE_CREATION'),
+(64,'DATE_CREATION','Catégorie 2',' ',2,1,10.00,1,1,'DATE_CREATION'),
+(65,'DATE_CREATION','Catégorie 3',' ',2,1,20.00,1,1,'DATE_CREATION'),
+(66,'DATE_CREATION','Catégorie 4',' ',2,1,40.00,1,1,'DATE_CREATION'),
+(67,'DATE_CREATION','Catégorie 5',' ',2,1,50.00,1,1,'DATE_CREATION'),
+(68,'DATE_CREATION','Catégorie 6',' ',2,1,80.00,1,1,'DATE_CREATION'),
+(69,'DATE_CREATION','Catégorie 7',' ',2,1,100.00,1,1,'DATE_CREATION'),
+(70,'DATE_CREATION','Couteau de cuisine',' ',4,1,1.00,1,1,'DATE_CREATION'),
+(71,'DATE_CREATION','Jolie Assiette ',' ',4,1,1.00,1,1,'DATE_CREATION'),
+(80,'DATE_CREATION','Ecran seul',' ',5,1,5.00,1,1,'DATE_CREATION'),
+(82,'DATE_CREATION','Jeux de société',' ',9,1,2.00,1,1,'DATE_CREATION'),
+(83,'DATE_CREATION','Peluche',' ',9,1,1.00,1,1,'DATE_CREATION'),
+(106,'DATE_CREATION','A Sacs','sacs',1,1,3.00,1,1,'DATE_CREATION'),
+(107,'DATE_CREATION','Souris',' ',5,1,1.00,1,1,'DATE_CREATION'),
+(108,'DATE_CREATION','Enceinte',' ',5,1,5.00,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `grille_objets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,6 +295,8 @@ CREATE TABLE `localites` (
 
 LOCK TABLES `localites` WRITE;
 /*!40000 ALTER TABLE `localites` DISABLE KEYS */;
+INSERT INTO `localites` VALUES
+(1,'DATE_CREATION','VILLE_RESSOURCERIE','#000000','','VILLE_RESSOURCERIE',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `localites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +332,10 @@ CREATE TABLE `moyens_paiement` (
 
 LOCK TABLES `moyens_paiement` WRITE;
 /*!40000 ALTER TABLE `moyens_paiement` DISABLE KEYS */;
-INSERT INTO `moyens_paiement` VALUES (1,'2018-01-03 22:43:22','Especes','billet et pieces ','#732121',1,1,1,'2018-01-03 22:43:30'),(2,'2018-01-03 22:43:22','Cheque','cheques','#c0c0c0',1,1,1,'2018-01-03 22:43:30'),(3,'2018-01-03 22:43:22','Carte Bleue','Carte Bleue','#0000ff',1,1,1,'2018-01-03 22:43:30');
+INSERT INTO `moyens_paiement` VALUES
+(1,'DATE_CREATION','Especes','billet et pieces ','#732121',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','Cheque','cheques','#c0c0c0',1,1,1,'DATE_CREATION'),
+(3,'DATE_CREATION','Carte Bleue','Carte Bleue','#0000ff',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `moyens_paiement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -432,7 +486,8 @@ CREATE TABLE `points_collecte` (
 
 LOCK TABLES `points_collecte` WRITE;
 /*!40000 ALTER TABLE `points_collecte` DISABLE KEYS */;
-INSERT INTO `points_collecte` VALUES (1,'','point de collecte par défaut','adresse point de collecte ','#732121',' ','PESEE_MAX',1,1,1,'');
+INSERT INTO `points_collecte` VALUES
+(1,'DATE_CREATION','NOM_RESSOURCERIE','ADRESSE_RESSOURCERIE','#732121',' ',1000,1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `points_collecte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -470,7 +525,8 @@ CREATE TABLE `points_sortie` (
 
 LOCK TABLES `points_sortie` WRITE;
 /*!40000 ALTER TABLE `points_sortie` DISABLE KEYS */;
-INSERT INTO `points_sortie` VALUES (1,'','point de sortie par défaut','adresse point de sortie ','#732121',' ','PESEE_MAX',1,1,1,'');
+INSERT INTO `points_sortie` VALUES
+(1,'DATE_CREATION','NOM_RESSOURCERIE','ADRESSE_RESSOURCERIE','#732121',' ',1000,1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `points_sortie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -508,7 +564,8 @@ CREATE TABLE `points_vente` (
 
 LOCK TABLES `points_vente` WRITE;
 /*!40000 ALTER TABLE `points_vente` DISABLE KEYS */;
-INSERT INTO `points_vente` VALUES (1,'','NOM_RESSOURCERIE','ADRESSE_RESSOURCERIE ','#732121',' ','xx',1,1,1,'');
+INSERT INTO `points_vente` VALUES
+(1,'DATE_CREATION','NOM_RESSOURCERIE','ADRESSE_RESSOURCERIE ','#732121',' ','xx',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `points_vente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -582,8 +639,15 @@ CREATE TABLE `type_collecte` (
 
 LOCK TABLES `type_collecte` WRITE;
 /*!40000 ALTER TABLE `type_collecte` DISABLE KEYS */;
+INSERT INTO `type_collecte` VALUES
+(1,'DATE_CREATION','Apport volontaire','.','#ef2929',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','Débarras Pro','Payant','#fcaf3e',1,1,1,'DATE_CREATION'),
+(3,'DATE_CREATION','Débarras Particulier','Payant','#fce94f',1,1,1,'DATE_CREATION'),
+(4,'DATE_CREATION','Collecte Pro','Gratuit','#000000',1,1,1,'DATE_CREATION'),
+(5,'DATE_CREATION','Collecte Particulier','Gratuit','#8ae234',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `type_collecte` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `type_contenants`
@@ -618,6 +682,12 @@ CREATE TABLE `type_contenants` (
 
 LOCK TABLES `type_contenants` WRITE;
 /*!40000 ALTER TABLE `type_contenants` DISABLE KEYS */;
+INSERT INTO `type_contenants` VALUES
+(1,'DATE_CREATION','Caisse Rouge Olive','Caisse Rouge Olive',2,'#ef2929',0,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','Caisse Olive Rouge','Caisse Olive Rouge',1,'#ef2929',1,1,1,'DATE_CREATION'),
+(3,'DATE_CREATION','Grande Caisse Noire IFCO','Grande Caisse Noire IFCO',2,'#000000',1,1,1,'DATE_CREATION'),
+(4,'DATE_CREATION','Caisse Marché Noire Souple','Caisse Marché Noire Souple',5,'#000000',0,1,1,'DATE_CREATION'),
+(5,'DATE_CREATION','Caisse Noire Souple','0.65 kg',0,'#2e3436',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `type_contenants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -653,7 +723,23 @@ CREATE TABLE `type_dechets` (
 
 LOCK TABLES `type_dechets` WRITE;
 /*!40000 ALTER TABLE `type_dechets` DISABLE KEYS */;
-INSERT INTO `type_dechets` VALUES (1,'','Livre','livre occasion ','#8feb34',1,1,1,''), (2,'','Vêtement','vêtement type A','#3695f5',1,1,1,''), (3,'','Meuble',' ','#de6d2c',1,1,1,'');
+INSERT INTO `type_dechets` VALUES
+(1,'2023-05-30 15:32:43','TLC','TLC : textile linge chaussure','#f57900',1,1,1,'2023-05-31 12:43:39'),
+(2,'2023-05-30 15:35:13','VAISSELLE','Autre déchets','#729fcf',1,1,1,'2023-06-06 13:56:12'),
+(3,'2023-05-30 15:35:56','ELECTRO','D3E ménager','#555753',1,1,1,'2023-10-30 13:12:43'),
+(4,'2023-05-30 15:37:08','BRICOLAGE ET JARDIN','ABJ : articles de bricolage et de jardin ','#4e9a06',1,1,1,'2023-06-06 13:54:14'),
+(5,'2023-05-30 15:37:56','CULTURE','papeterie-audio-video','#9f50db',1,1,1,'2023-05-30 15:49:54'),
+(6,'2023-05-30 15:49:24','SPORT ET LOISIR',' ASL : articles de sport et de loisirs','#cf1818',1,1,1,'2023-06-06 13:54:06'),
+(7,'2023-05-31 12:36:41','JOUET',' ','#bc326a',1,1,1,'2023-05-31 12:37:07'),
+(8,'2023-05-31 12:46:40','PRO ELECTRO ','D3E PRO','#2b2b81',1,1,1,'2023-10-30 13:13:28'),
+(9,'2023-05-31 12:49:17','MATERIAUX CONSTRUCTION','PMCB : produit et matériaux de construction','#c17d11',1,1,1,'2023-05-31 12:50:51'),
+(10,'2023-06-06 13:56:54','BIBELOT','autre déchets','#2faaa1',1,1,1,'2023-06-06 13:56:54'),
+(11,'2023-09-06 12:05:10','SNAKING','nourriture / boisson','#000000',1,1,1,'2025-02-13 11:25:25'),
+(12,'2023-10-11 11:51:06','MOBILIER','DEA : déchet d&#39;éléments d&#39;ameublement','#ad7fa8',1,1,1,'2023-10-11 11:51:06'),
+(13,'2023-10-11 11:53:44','PRO MOBILIER','PRO DEA Déchet d&#39;éléments d&#39;ameublement pro','#fce94f',1,1,1,'2023-10-11 11:53:44'),
+(14,'2023-10-26 07:56:25','LIVRAISON',' ','#babdb6',1,1,1,'2023-10-26 07:56:53'),
+(15,'2024-02-24 14:03:16','ADHESION','prix libre','#8ae234',1,1,1,'2024-02-24 14:03:16'),
+(16,'2024-07-12 14:47:30','INFO KIOSQUE','stickers','#725499',1,1,1,'2025-02-13 11:25:16');
 /*!40000 ALTER TABLE `type_dechets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -689,6 +775,10 @@ CREATE TABLE `type_dechets_evac` (
 
 LOCK TABLES `type_dechets_evac` WRITE;
 /*!40000 ALTER TABLE `type_dechets_evac` DISABLE KEYS */;
+INSERT INTO `type_dechets_evac` VALUES
+(1,'DATE_CREATION','NOIRE','tout venant','#000000',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','JAUNE','papier, carton, éco-emballage','#edd400',1,1,1,'DATE_CREATION'),
+(3,'DATE_CREATION','D3E','Platinage mélé','#729fcf',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `type_dechets_evac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -724,6 +814,9 @@ CREATE TABLE `type_sortie` (
 
 LOCK TABLES `type_sortie` WRITE;
 /*!40000 ALTER TABLE `type_sortie` DISABLE KEYS */;
+INSERT INTO `type_sortie` VALUES
+(1,'DATE_CREATION','Dons en boutique',' ','#75507b',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','Dons pour associations',' ','#729fcf',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `type_sortie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -761,6 +854,10 @@ CREATE TABLE `types_poubelles` (
 
 LOCK TABLES `types_poubelles` WRITE;
 /*!40000 ALTER TABLE `types_poubelles` DISABLE KEYS */;
+INSERT INTO `types_poubelles` VALUES
+(1,'DATE_CREATION','Bac Tout Venant','Gris et bleu',1,1,'#8f5902',1,1,1,'DATE_CREATION'),
+(2,'DATE_CREATION','Grand Bac Jaune','Emballages / Papier / Carton',4,0,'#edd400',1,1,1,'DATE_CREATION'),
+(3,'DATE_CREATION','Petit Bac Jaune','Emballages / Papier / Carton',1,0,'#edd400',1,1,1,'DATE_CREATION');
 /*!40000 ALTER TABLE `types_poubelles` ENABLE KEYS */;
 UNLOCK TABLES;
 
