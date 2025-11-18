@@ -14,7 +14,7 @@
   <!-- Custom styles for this template -->
   <link href="/css/common.css" rel="stylesheet" />
 </head>
-<body style="height: 83vh;">
+<body class="bg-light" style="height: 83vh;">
   <?php include($PARTIALS.'/_header.html.php'); ?>
   <div class="bg-light" style="height: 100%;">
     <?php include($content); ?>

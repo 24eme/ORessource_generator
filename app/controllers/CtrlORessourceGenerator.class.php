@@ -172,7 +172,11 @@ class CtrlORessourceGenerator
 
   function createConfig($f3, $data)
   {
-    $config_path = Config::getInstance()->getORessourcePath().'/config/config_' . $f3->get('SESSION.db_name') . '.php';
+    $config_path = Config::getInstance()->getORessourcePath().'/config';
+    if (! is_dir($config_path)) {
+        mkdir($config_path);
+    }
+    $config_path = .'/config/config_' . $f3->get('SESSION.db_name') . '.php';
 
     if (! file_put_contents($config_path, "<?php\n\n")) {
         throw new Exception("Erreur au chargement initial du fichier de config");
@@ -215,16 +219,18 @@ class CtrlORessourceGenerator
   {
     $dbh = $this->getDBH($f3);
 
-    $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE'];
-    $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie')];
+    $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'VILLE_RESSOURCERIE', 'DATE_CREATION'];
+    $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie'), $f3->get('SESSION.ville'), date('Y-m-d H:i:s')];
     if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
       return false;
     }
 
+    $dbh->beginTransaction();
     $sql_user = "INSERT INTO `utilisateurs` (`timestamp`, `niveau`, `nom`, `prenom`, `mail`, `pass`, `id_createur`, `id_last_hero`, `last_hero_timestamp`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s');";
     if (! $dbh->query(sprintf($sql_user, date('Y-m-d H:i:s'), 'c1c2c3v1v2v3s1bighljk', 'administrateur.ice', 'oressource', $f3->get('SESSION.emailRessourcerie'), md5($f3->get('SESSION.motDePasse')), 1, 1, date('Y-m-d H:i:s')))) {
       return false;
     }
+    $dbh->commit();
 
     return true;
   }
