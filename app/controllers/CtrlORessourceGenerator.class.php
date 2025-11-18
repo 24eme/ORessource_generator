@@ -144,7 +144,7 @@ class CtrlORessourceGenerator
     $data['pass'] = '$pass = "'. $pass.'";';
     try {
       clearstatcache(true);
-      if (! symlink($f3->get('PATH_ORESSOURCE'), './'.$f3->get('SESSION.db_name'))) {
+      if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.db_name'))) {
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
       $this->createConfig($f3, $data);
@@ -172,7 +172,7 @@ class CtrlORessourceGenerator
 
   function createConfig($f3, $data)
   {
-    $config_path = $f3->get('PATH_ORESSOURCE').'/config/config_' . $f3->get('SESSION.db_name') . '.php';
+    $config_path = Config::getInstance()->getORessourcePath().'/config/config_' . $f3->get('SESSION.db_name') . '.php';
 
     if (! file_put_contents($config_path, "<?php\n\n")) {
         throw new Exception("Erreur au chargement initial du fichier de config");
