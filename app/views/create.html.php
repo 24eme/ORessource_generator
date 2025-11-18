@@ -73,9 +73,9 @@
               <div class="col-8 mb-2">
                 <label for="motDePasse" class="form-label">Confirmation du mot de passe administrateur.ice</label>
                 <div class="input-group has-validation">
-                  <input type="password" class="form-control" id="motDePasse" name="motDePasse" placeholder="" required>
+                  <input type="password" class="form-control" id="motDePasseRepetition" name="motDePasseRepetition" placeholder="" required>
                   <div class="invalid-feedback">
-                    Votre mot de passe est nécessaire.
+                    Les 2 mots de passe ne sont pas identiques.
                   </div>
                 </div>
               </div>

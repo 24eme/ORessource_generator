@@ -91,6 +91,9 @@ class CtrlORessourceGenerator
     $ret['ville'] = htmlspecialchars($data['ville']);
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
+    if($data['motDePasse'] != $data['motDePasseRepetition']) {
+        throw new Exception("Les 2 mots de passe ne sont pas identique.");
+    }
     if ($_FILES['backupInput']['name']) {
       if (pathinfo($_FILES['backupInput']['name'], PATHINFO_EXTENSION) != 'sql') {
         throw new \Exception("Le fichier de sauvegarde déposé n'est pas un fichier sql", 1);
