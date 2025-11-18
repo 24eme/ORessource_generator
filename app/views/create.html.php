@@ -1,6 +1,6 @@
 
     <div class="container" style="max-width: 1050px;">
-      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb" class="mt-2">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Accueil</a></li>
           <li class="breadcrumb-item"><a href="/demarrer">Hébergement</a></li>
@@ -10,8 +10,9 @@
       </nav>
       <a name="accueil"></a>
       <div class="row">
-        <div class="col"></div>
-        <div id="mainInfo" class="col-8 justify-content-center mt-5">
+        <div class="col-2"></div>
+        <div id="mainInfo" class="col-8 justify-content-center">
+            <h2 class="mb-4">Informations de la ressourcerie</h2>
           <?php foreach(\Flash::instance()->getMessages() as $message): ?>
             <div class="alert alert-<?php echo $message['status']?> alert-dismissable">
               <?php echo $message['text']; ?>
@@ -72,27 +73,26 @@
                   </div>
                 </div>
               </div>
-                <div class="mt-4 col-12">
-                  <div class="form-check form-switch">
+
+               <div class="mt-4 col-12">
+                    <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="sauvegarde" <?php if (array_key_exists('from_backup', $_GET) && $_GET['from_backup'] == true) {echo "checked";} ?>>
                     <label class="form-check-label" for="sauvegarde">Démarrer à partir d'une sauvegarde</label>
-                  </div>
-                </div>
+                    </div>
+               </div>
 
-                <div id="divFileInput" class="col-6" <?php if (! (array_key_exists('from_backup', $_GET) && $_GET['from_backup'] == true)) {echo "hidden";} ?>>
+            <div id="divFileInput" class="col-6" <?php if (! (array_key_exists('from_backup', $_GET) && $_GET['from_backup'] == true)) {echo "hidden";} ?>>
                   <div class="">
                     <input class="form-control" type="file" id="fileInput" name="backupInput">
                   </div>
-                </div>
                 <input id="fromBackup" type="hidden" name="from_backup" value="">
-
             </div>
-            <hr>
-            <button class="btn btn-primary btn-lg float-end" type="submit">Valider mes informations</button>
-
-          </div>
+            <div class="col-12 mb-4">
+                <hr />
+                <button class="btn btn-primary btn-lg float-end" type="submit">Valider mes informations</button>
+            </div>
+            </div>
         </form>
-
         <div class="col"></div>
       </div>
     </div>
