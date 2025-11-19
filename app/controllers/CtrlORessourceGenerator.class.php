@@ -230,7 +230,7 @@ class CtrlORessourceGenerator
 
   function loadDataInDatabase($f3, $backup, $db_name, $user, $pass)
   {
-    $dbh = $this->getDBH($f3);
+    $dbh = $this->getDBH($f3, $db_name);
 
     $dbh->beginTransaction();
     $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'VILLE_RESSOURCERIE', 'DATE_CREATION'];
