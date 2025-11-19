@@ -80,15 +80,25 @@ class CtrlORessourceGenerator
     return $f3->reroute('/visualisation');
   }
 
+  public static function cleanInput($s) {
+      $s = preg_replace('/<[^>]*>/', '', $s);
+      $s = str_replace(';', '', $s);
+      return $s;
+  }
+
   function verifyAndCleanData($f3)
   {
     $ret = array();
     $data = $f3->get('POST');
-    $ret['nomRessourcerie'] = htmlspecialchars($data['nomRessourcerie']);
+    $ret['nomRessourcerie'] = self::cleanInput($data['nomRessourcerie']);
     $ret['nomRessourcerie_base'] = Web::instance()->slug($ret['nomRessourcerie']);
-    $ret['adresseRessourcerie'] = htmlspecialchars($data['adresseRessourcerie']);
-    $ret['codePostal'] = filter_var($data['codePostal'], FILTER_SANITIZE_NUMBER_INT);
-    $ret['ville'] = htmlspecialchars($data['ville']);
+    $ret['adresseRessourcerie'] = self::cleanInput($data['adresseRessourcerie']);
+    if (preg_match('/^[0-9AB]{5}$/', $data['codePostal'])) {
+        $ret['codePostal'] =  $data['codePostal'];
+    } else {
+        $ret['codePostal'] =  preg_match('/[^0-9AB]/', '', $data['codePostal']);
+    }
+    $ret['ville'] = self::cleanInput($data['ville']);
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
     if($data['motDePasse'] != $data['motDePasseRepetition']) {
@@ -139,12 +149,12 @@ class CtrlORessourceGenerator
 
   function generate(Base $f3)
   {
-    $data['host'] = '$host = "'.Config::getInstance()->getDBHost().'";';
-    $data['port'] = '$port = "'.Config::getInstance()->getDBPort().'";';
-    $data['base'] = '$base = "' . $f3->get('SESSION.db_name').'";';
-    $data['user'] = '$user = "' . $f3->get('SESSION.db_name').'";';
+    $data['host'] = '$host = "'.addslashes(Config::getInstance()->getDBHost()).'";';
+    $data['port'] = '$port = "'.addslashes(Config::getInstance()->getDBPort()).'";';
+    $data['base'] = '$base = "' . addslashes($f3->get('SESSION.db_name')).'";';
+    $data['user'] = '$user = "' . addslashes($f3->get('SESSION.db_name')).'";';
     $pass = md5(uniqid(date('dmY').$f3->get('SESSION.db_name').rand(0, 10000)));
-    $data['pass'] = '$pass = "'. $pass.'";';
+    $data['pass'] = '$pass = "'. addslashes($pass).'";';
     try {
       clearstatcache(true);
       if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.db_name'))) {
@@ -222,16 +232,22 @@ class CtrlORessourceGenerator
   {
     $dbh = $this->getDBH($f3);
 
+    $dbh->beginTransaction();
     $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'VILLE_RESSOURCERIE', 'DATE_CREATION'];
-    $replace = [$f3->get('SESSION.nomRessourcerie'), $f3->get('SESSION.adresseRessourcerie'), $f3->get('SESSION.emailRessourcerie'), $f3->get('SESSION.ville'), date('Y-m-d H:i:s')];
+    $replace = [addslashes($f3->get('SESSION.nomRessourcerie')), addslashes($f3->get('SESSION.adresseRessourcerie')),
+                addslashes($f3->get('SESSION.emailRessourcerie')), addslashes($f3->get('SESSION.ville')), date('Y-m-d H:i:s')];
     if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
-      return false;
+        return false;
     }
 
-    $dbh->beginTransaction();
-    $sql_user = "INSERT INTO `utilisateurs` (`timestamp`, `niveau`, `nom`, `prenom`, `mail`, `pass`, `id_createur`, `id_last_hero`, `last_hero_timestamp`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s');";
-    if (! $dbh->query(sprintf($sql_user, date('Y-m-d H:i:s'), 'c1c2c3v1v2v3s1s2s3bighljk', 'administrateur.ice', 'oressource', $f3->get('SESSION.emailRessourcerie'), md5($f3->get('SESSION.motDePasse')), 1, 1, date('Y-m-d H:i:s')))) {
-      return false;
+    $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`timestamp`, `niveau`, `nom`, `prenom`, `mail`, `pass`, `id_createur`, `id_last_hero`, `last_hero_timestamp`) ".
+                         "VALUES (:timestamp, :niveau, :nom, :prenom, :mail, :pass, :id_createur, :id_last_hero, :last_hero_timestamp);");
+    $ret = $sth->execute(['timestamp' => date('Y-m-d H:i:s'), 'niveau' => 'c1c2c3v1v2v3s1s2s3bighljk', 'nom' => 'administrateur.ice',
+                         'prenom' => 'oressource', 'mail' => $f3->get('SESSION.emailRessourcerie'), 'pass' => md5($f3->get('SESSION.motDePasse')),
+                         'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
+
+    if ($ret) {
+        return false;
     }
     $dbh->commit();
 
