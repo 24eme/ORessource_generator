@@ -32,12 +32,30 @@
             </p>
             <div class="mx-5 px-5 my-5">
             <table class="table">
-                <tr><th><i class="bi bi-shield-check"></i>&nbsp;Adresse URL de votre instance</th><td><?php echo 'https://'.$_SERVER['HTTP_HOST'].'/'.$SESSION['db_name'].'/';?></td></tr>
-            <tr><th><i class="bi bi-person-fill"></i>&nbsp;Identifiant</th><td><?php echo $SESSION['emailRessourcerie'];?></td></tr>
-            <tr><th><i class="bi bi-key"></i>&nbsp;Mot de passe</th><td><?php echo $SESSION['motDePasse'];?></td></tr>
+                <tr>
+                    <th><i class="bi bi-shield-check"></i>&nbsp;Adresse URL de votre instance</th>
+                    <td>
+                        <span id="url_data"><?php echo 'https://'.$_SERVER['HTTP_HOST'].'/'.$SESSION['db_name'].'/';?></span>
+                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('url_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="bi bi-person-fill"></i>&nbsp;Identifiant</th>
+                    <td>
+                        <span id="email_data"><?php echo $SESSION['emailRessourcerie'];?></span>
+                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('email_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="bi bi-key"></i>&nbsp;Mot de passe</th>
+                    <td>
+                        <span id="mdp_data"><?php echo $SESSION['motDePasse'];?></span>
+                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('mdp_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                    </td>
+                </tr>
             </table>
             <p class="text-center">
-                <a class="btn btn-primary" target="_blank" href="/<?php echo $SESSION['db_name']; ?>">Se rendre sur votre instance</a>
+                 <a class="btn btn-primary mt-3" href="/<?php echo $SESSION['db_name']; ?>/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> &nbsp; Accéder au site</a>
             </p>
             </div>
           </div>
