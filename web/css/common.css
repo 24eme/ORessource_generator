@@ -39,18 +39,18 @@ table tr:hover td.delrow i {
 
 :root {
     --bs-primary-rgb: 39, 119, 103;
-    --bs-primary: #567980;
+    --bs-primary: #1ea082;
     --bs-primary-bg-subtle: #85baa8;
     --bs-link-color-rgb: 39, 119, 103;
     --bs-link-hover-color-rgb: 18, 91, 77;
     --bs-link-hover-color: #125b4d;
     --bs-link-color: #2a685c;
-    --bs-nav-link-hover-color: #567980;
+    --bs-nav-link-hover-color: #1ea082;
     --bs-btn-active-color: #327669;
 }
 
 .btn-link {
-    --bs-btn-hover-color: #567980;
+    --bs-btn-hover-color: #1ea082;
 }
 
 .btn-link:hover {
@@ -62,10 +62,10 @@ table tr:hover td.delrow i {
 }
 
 .btn-primary {
-    --bs-btn-bg: #567980;
-    --bs-btn-border-color: #567980;
-    --bs-btn-disabled-border-color: #567980;
-    --bs-btn-disabled-bg: #567980;
+    --bs-btn-bg: #1ea082;
+    --bs-btn-border-color: #1ea082;
+    --bs-btn-disabled-border-color: #1ea082;
+    --bs-btn-disabled-bg: #1ea082;
     --bs-btn-hover-bg: #2a685c;
     --bs-btn-active-bg: #327669;
     --bs-btn-hover-border-color: #327669;
@@ -73,19 +73,19 @@ table tr:hover td.delrow i {
 }
 
 .btn-outline-primary {
-  --bs-btn-color: #567980;
-  --bs-btn-border-color: #567980;
-  --bs-btn-hover-bg: #567980;
-  --bs-btn-hover-border-color: #567980;
-  --bs-btn-active-bg: #567980;
-  --bs-btn-active-border-color: #567980;
-  --bs-btn-disabled-color: #567980;
-  --bs-btn-disabled-border-color: #567980;
+  --bs-btn-color: #1ea082;
+  --bs-btn-border-color: #1ea082;
+  --bs-btn-hover-bg: #1ea082;
+  --bs-btn-hover-border-color: #1ea082;
+  --bs-btn-active-bg: #1ea082;
+  --bs-btn-active-border-color: #1ea082;
+  --bs-btn-disabled-color: #1ea082;
+  --bs-btn-disabled-border-color: #1ea082;
 }
 
 .form-check-input:checked {
-    background-color: #567980;
-    border-color: #567980;
+    background-color: #1ea082;
+    border-color: #1ea082;
 }
 
 .form-switch .form-check-input:focus {
