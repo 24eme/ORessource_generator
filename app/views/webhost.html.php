@@ -14,7 +14,8 @@
             <div class="card text-center shadow-sm">
               <a href="/create"><img src="/images/eucalyp_new-database.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
               <div class="card-body">
-                <h5 class="card-title">A partir d'une base de donnée vierge</h5>
+                <h5 class="card-title">À partir d'une base de donnée vierge</h5>
+                <p class="text-muted mx-5">Vous disposerez alors d'un espace préconfiguré pour votre ressourcerie.</p>
               </div>
             </div>
           </div>
@@ -22,7 +23,8 @@
             <div class="card text-center shadow-sm">
               <a href="/create?from_backup=true"><img src="/images/eucalyp_from-backup.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
               <div class="card-body">
-                <h5 class="card-title">A partir d'une sauvegarde</h5>
+                <h5 class="card-title">À partir d'une sauvegarde</h5>
+                <p class="text-muted mx-5">Si vous utilisez déjà de ORessource mais que vous souhaitez migrer vers oressource.org.</p>
               </div>
             </div>
           </div>
