@@ -17,7 +17,7 @@
         <h5 class="card-header">Rappel de vos informations de connection</h5>
         <form action="/generate" method="post">
           <div class="card-body">
-            <p class="alert alert-success text-center">Nous venons de terminer l'installation de votre instance oressource.org !!</p>
+            <p class="alert alert-success text-center">Votre instance oressource.org est installée !!</p>
             <p>
                 L'instance est mise à disposition à prix libre par la coopérative 24ème.
                 Sans utilisation pendant une période d'un mois, l'équipe du 24ème pourrait être amenée à la supprimer.
