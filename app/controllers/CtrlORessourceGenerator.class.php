@@ -205,7 +205,7 @@ class CtrlORessourceGenerator
     $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
     $sql->execute(array(':user' => $user, ':pass' => $pass));
 
-    $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
+    $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
     $sql->execute(array(':user' => $user, ':pass' => $pass));
 
     if ($f3->get('SESSION.from_backup') && $f3->get('SESSION.backupInput')) {
