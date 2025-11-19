@@ -189,7 +189,7 @@ class CtrlORessourceGenerator
     if (! is_dir($config_path)) {
         mkdir($config_path);
     }
-    $config_path .= '/config/config_' . $f3->get('SESSION.db_name') . '.php';
+    $config_path .= '/config_' . $f3->get('SESSION.db_name') . '.php';
 
     if (! file_put_contents($config_path, "<?php\n\n")) {
         throw new Exception("Erreur au chargement initial du fichier de config");
@@ -215,7 +215,7 @@ class CtrlORessourceGenerator
     $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
     $sql->execute(array(':user' => $user, ':pass' => $pass));
 
-    $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
+    $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
     $sql->execute(array(':user' => $user, ':pass' => $pass));
 
     if ($f3->get('SESSION.from_backup') && $f3->get('SESSION.backupInput')) {
@@ -246,10 +246,9 @@ class CtrlORessourceGenerator
                          'prenom' => 'oressource', 'mail' => $f3->get('SESSION.emailRessourcerie'), 'pass' => md5($f3->get('SESSION.motDePasse')),
                          'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
 
-    if ($ret) {
-        return false;
+    if (! $ret) {
+      return false;
     }
-    $dbh->commit();
 
     return true;
   }
