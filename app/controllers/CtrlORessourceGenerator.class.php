@@ -246,10 +246,9 @@ class CtrlORessourceGenerator
                          'prenom' => 'oressource', 'mail' => $f3->get('SESSION.emailRessourcerie'), 'pass' => md5($f3->get('SESSION.motDePasse')),
                          'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
 
-    if ($ret) {
-        return false;
+    if (! $ret) {
+      return false;
     }
-    $dbh->commit();
 
     return true;
   }
