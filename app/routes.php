@@ -12,3 +12,4 @@ $f3->route('GET /redirect', 'CtrlORessourceGenerator->redirectToInstance');
 $f3->route('GET /validation', 'CtrlORessourceGenerator->validation');
 $f3->route('POST /dataCheck', 'CtrlORessourceGenerator->dataCheck');
 $f3->route('POST /generate', 'CtrlORessourceGenerator->generate');
+$f3->route('GET /check', 'CtrlORessourceGenerator->checkConfig');
