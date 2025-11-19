@@ -80,15 +80,25 @@ class CtrlORessourceGenerator
     return $f3->reroute('/visualisation');
   }
 
+  public static function cleanInput($s) {
+      $s = preg_replace('/<[^>]*>/', '', $s);
+      $s = str_replace(';', '', $s);
+      return $s;
+  }
+
   function verifyAndCleanData($f3)
   {
     $ret = array();
     $data = $f3->get('POST');
-    $ret['nomRessourcerie'] = htmlspecialchars($data['nomRessourcerie']);
+    $ret['nomRessourcerie'] = self::cleanInput($data['nomRessourcerie']);
     $ret['nomRessourcerie_base'] = Web::instance()->slug($ret['nomRessourcerie']);
-    $ret['adresseRessourcerie'] = htmlspecialchars($data['adresseRessourcerie']);
-    $ret['codePostal'] = filter_var($data['codePostal'], FILTER_SANITIZE_NUMBER_INT);
-    $ret['ville'] = htmlspecialchars($data['ville']);
+    $ret['adresseRessourcerie'] = self::cleanInput($data['adresseRessourcerie']);
+    if (preg_match('/^[0-9AB]{5}$/', $data['codePostal'])) {
+        $ret['codePostal'] =  $data['codePostal'];
+    } else {
+        $ret['codePostal'] =  preg_match('/[^0-9AB]/', '', $data['codePostal']);
+    }
+    $ret['ville'] = self::cleanInput($data['ville']);
     $ret['emailRessourcerie'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $ret['motDePasse'] = $data['motDePasse'];
     if($data['motDePasse'] != $data['motDePasseRepetition']) {
