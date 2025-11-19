@@ -24,7 +24,13 @@
             <?php endif;?>
             <h5 class="card-title"><i class="bi bi-envelope-at"></i>&nbsp;Email (identifiant) : <?php echo $SESSION['emailRessourcerie'];?></h5>
             <h5 class="card-title"><i class="bi bi-key"></i>&nbsp;Mot de passe : <?php echo $SESSION['motDePasse'];?></h5>
-              <a class="btn btn-primary" href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a>
+            <div class="input-group mb-3 w-50 mx-auto mt-5">
+                <span class="input-group-text" id="basic-addon1">Lien de l'instance</span>
+                <input id="input_lien_instance" type="text" class="form-control" readonly value="<?php echo $urlbase ?>/<?php echo $SESSION['db_name']; ?>/ifaces/">
+                <button class="btn btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('input_lien_instance').value); this.innerText = 'Copié !';"><i class="bi bi-clipboard"></i></button>
+            </div>
+            <a class="btn btn-primary mt-3" href="/<?php echo $SESSION['db_name']; ?>/ifaces/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Accéder au site</a>
+            </div>
           </div>
         </form>
       </div>
