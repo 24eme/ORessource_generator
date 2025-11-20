@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="bg-light">
-    <div class="container" style="max-width: 1050px;">
+    <div class="container" style="max-width: 1050px; min-height: 550px">
       <a name="accueil"></a>
       <div class="row">
         <div class="col"></div>
