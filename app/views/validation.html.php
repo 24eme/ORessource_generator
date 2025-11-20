@@ -16,15 +16,48 @@
       <div class="card mt-4">
         <h5 class="card-header">Rappel de vos informations de connection</h5>
         <form action="/generate" method="post">
-          <div class="card-body text-center">
+          <div class="card-body">
+            <p class="alert alert-success text-center">Votre instance oressource.org est installée !!</p>
+            <p>
+                L'instance est mise à disposition à prix libre par la coopérative 24ème.
+                Sans utilisation pendant une période d'un mois, l'équipe du 24ème pourrait être amenée à la supprimer.
+                L'icone ❤️ dans votre instance vous permettra de contacter le 24ème si vous avez des questions sur la pérénité de votre instannce ou les manière de contribuer à la maintenance de oressource.org et du logiciel ORessource.
+            </p>
+            <p>
             <?php if (array_key_exists('from_backup', $SESSION)):?>
-              <p>Pour vous connecter à votre instance, vous pouvez utiliser vos anciens identifiants aussi bien que le nouveau que vous venez de créer :</p>
-            <?php else: ?>
-              <p>Pour vous connecter à votre instance, utilisez l'utilisateur que vous venez de créer :</p>
+            Pour vous connecter à votre instance, vous pouvez utiliser vos anciens identifiants aussi bien que le nouveau que vous venez de créer.
             <?php endif;?>
-            <h5 class="card-title"><i class="bi bi-envelope-at"></i>&nbsp;Email (identifiant) : <?php echo $SESSION['emailRessourcerie'];?></h5>
-            <h5 class="card-title"><i class="bi bi-key"></i>&nbsp;Mot de passe : <?php echo $SESSION['motDePasse'];?></h5>
-              <a class="btn btn-primary" href="/<?php echo $SESSION['db_name']; ?>/ifaces/">lien vers votre site</a>
+            Vous pouvez dès maintenant utiliser votre instance oressource.org.
+            Voici les informations qui vous permettront de vous connecter à votre instannce et de l'utiliser :
+            </p>
+            <div class="mx-5 px-5 my-5">
+            <table class="table">
+                <tr>
+                    <th><i class="bi bi-shield-check"></i>&nbsp;Adresse URL de votre instance</th>
+                    <td>
+                        <span id="url_data"><?php echo 'https://'.$_SERVER['HTTP_HOST'].'/'.$SESSION['db_name'].'/';?></span>
+                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('url_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="bi bi-person-fill"></i>&nbsp;Identifiant</th>
+                    <td>
+                        <span id="email_data"><?php echo $SESSION['emailRessourcerie'];?></span>
+                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('email_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="bi bi-key"></i>&nbsp;Mot de passe</th>
+                    <td>
+                        <span id="mdp_data"><?php echo $SESSION['motDePasse'];?></span>
+                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('mdp_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                    </td>
+                </tr>
+            </table>
+            <p class="text-center">
+                 <a class="btn btn-primary mt-3" href="/<?php echo $SESSION['db_name']; ?>/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> &nbsp; Accéder au site</a>
+            </p>
+            </div>
           </div>
         </form>
       </div>

@@ -127,25 +127,42 @@ class CtrlORessourceGenerator
     return $ret;
   }
 
-  function verifyDatabaseAndFolder($f3)
+  function verifyDatabaseAndFolder($f3, $check = false)
   {
     $db_name = $f3->get('SESSION.db_name');
+    $audit = [
+        'database_root' => false,
+        'database_instance' => false,
+        'oresource_path' => false,
+        'instance_link' => false,
+    ];
     try {
         $dbh = $this->getDBH($f3, $db_name);
     } catch (Exception $e) {
         $dbh = null;
     }
     if ($dbh) {
-      throw new \Exception("Une base de donnée existe déjà pour cette ressourcerie", 1);
+        $audit['instance_name'] = $db_name;
+        $audit['database_instance'] = 1;
+        if (!$check) {
+            throw new \Exception("Une base de donnée existe déjà pour cette ressourcerie", 1);
+        }
     }
 
-    if (! $this->instanceIsUnique($f3, $db_name)) {
-      throw new \Exception("Une instance existe déjà pour cette ressourcerie", 1);
-
+    if ($this->instanceIsUnique($f3, $db_name)) {
+        $audit['instance_link'] = 1;
+    } else {
+        if (!$check) {
+            throw new \Exception("Une instance existe déjà pour cette ressourcerie", 1);
+        }
     }
     if (! is_dir(Config::getInstance()->getORessourcePath())) {
-      throw new \Exception("Le dossier ORessource est introuvable", 1);
+        $audit['oresource_path'] = 1;
+        if (!$check) {
+            throw new \Exception("Le dossier ORessource est introuvable", 1);
+        }
     }
+    return $audit;
   }
 
   function instanceIsUnique($f3, $db_name)
@@ -195,6 +212,15 @@ class CtrlORessourceGenerator
     return $f3->reroute('/validation');
   }
 
+  public function checkConfig($f3, $data)
+  {
+      $audits = $this->verifyDatabaseAndFolder($f3, true);
+      if ($this->getDBH($f3)) {
+          $audits['database_root'] = 1;
+      }
+      print_r([$audits]);exit;
+  }
+
   function createConfig($f3, $data)
   {
     $config_path = Config::getInstance()->getORessourcePath().'/config';
@@ -242,7 +268,7 @@ class CtrlORessourceGenerator
 
   function loadDataInDatabase($f3, $backup, $db_name, $user, $pass)
   {
-    $dbh = $this->getDBH($f3);
+    $dbh = $this->getDBH($f3, $db_name);
 
     $dbh->beginTransaction();
     $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'VILLE_RESSOURCERIE', 'DATE_CREATION'];

@@ -7,8 +7,15 @@
       </nav>
       <div class="card mt-4">
         <h5 class="card-header">Héberger ORessource</h5>
-          <div class="card-body text-center">
-            Pour installer ORessource en local sur votre machine, vous pouvez suivre ce PDF explicatif
+          <div class="card-body">
+            <p>
+                Pour héberger vous même ORessource, vous devez disposer d'un ordinateur ou d'un serveur accessible via le réseau de votre ressourcerie/recyclerie.
+                Cet ordinateur devra être sous Linux. Une fois installé, pensez à sauvegarder régulièrement votre base ORessource
+                (et stocker ces sauvegardes sur un support différent).
+            </p>
+            <p>La procédure d'installation de ORessource est décrite dans le document suivant :</p>
+            <center>
             <embed src="tuto-ressource.pdf" width="100%" height="1000px" type="application/pdf">
+            </center>
           </div>
       </div>

@@ -11,6 +11,7 @@
             <a href="/selfhost"><img src="/images/eucalyp_selfhost.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
             <div class="card-body">
               <h5 class="card-title">Chez moi</h5>
+              <p class="text-muted mx-5">Hébergé et sauvegardé sur<br/>un de mes ordinateurs ou serveurs.</p>
             </div>
           </div>
         </div>
@@ -19,27 +20,7 @@
             <a href="/webhost"><img src="/images/eucalyp_webhost.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
             <div class="card-body">
               <h5 class="card-title">En ligne</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="sauvegarde" hidden>
-        <h2>Je démarre : </h2>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <div class="col">
-            <div class="card text-center shadow-sm shadow-sm">
-              <a href="/create"><img src="/images/new-database.png" height="200px" width="200px" class="" alt="auto hebergement"></a>
-              <div class="card-body">
-                <h5 class="card-title">à partir d'une base de donnée vierge</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card text-center">
-              <a href="/create?from_backup=true"><img src="/images/from-backup.png" height="200px" width="200px" class="" alt="hébergement en ligne"></a>
-              <div class="card-body">
-                <h5 class="card-title">à partir d'une sauvegarde</h5>
-              </div>
+              <p class="text-muted mx-5">Hébergé et sauvegardé sur<br/>oressource.org par la coopérative 24ème.</p>
             </div>
           </div>
         </div>

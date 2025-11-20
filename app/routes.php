@@ -14,3 +14,4 @@ $f3->route('GET /assistance', 'CtrlORessourceGenerator->assistance');
 $f3->route('GET /apropos', 'CtrlORessourceGenerator->apropos');
 $f3->route('POST /dataCheck', 'CtrlORessourceGenerator->dataCheck');
 $f3->route('POST /generate', 'CtrlORessourceGenerator->generate');
+$f3->route('GET /check', 'CtrlORessourceGenerator->checkConfig');
