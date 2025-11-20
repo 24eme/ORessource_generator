@@ -27,6 +27,18 @@ class CtrlORessourceGenerator
     echo View::instance()->render('/layout.html.php');
   }
 
+  function assistance(Base $f3)
+  {
+    $f3->set('content', 'assistance.html.php');
+    echo View::instance()->render('/layout.html.php');
+  }
+
+  function apropos(Base $f3)
+  {
+    $f3->set('content', 'apropos.html.php');
+    echo View::instance()->render('/layout.html.php');
+  }
+
   private function getDBH(Base $f3, $dbname = null, $user = null, $passwd = null) {
       $host = Config::getInstance()->getDBHost();
       $port = Config::getInstance()->getDBPort();
