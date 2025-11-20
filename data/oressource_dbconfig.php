@@ -21,7 +21,7 @@
 // Changer ces valeurs selon votre configuration de systeme de base de donnée.include(/config_global/);
 include('../config/config_'.explode('/', $_SERVER['REQUEST_URI'])[1].'.php');
 
-$menu_extra = ['Assistance' => '/assistance', 'Contact' => '/assistance', 'À propos' => '/apropos'];
+$menu_extra = ['Assistance' => '/contact', 'Contact' => '/contact', 'À propos' => '/#projet'];
 
 // Dans mysql le bon encodage pour l'utf-8 est utf8mb4.
 // https://medium.com/@adamhooper/in-mysql-never-use-utf8-use-utf8mb4-11761243e434
