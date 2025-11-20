@@ -69,22 +69,11 @@
         <div class="col-sm-6 mt-4">
           <div class="card shadow-sm">
             <div class="card-header">
-              <i class="bi bi-window-split"></i> Ergonomie
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Simplicité d'accès</h5>
-              <p class="card-text">Les utilisateurs peuvent utiliser le logiciel depuis n'importe quel type de système d'exploitation (Linux, Windows, Mac) ou appareil (ordinateur fixe ou portable, tablette, téléphone, ...)<br /></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 mt-4">
-          <div class="card shadow-sm">
-            <div class="card-header">
               <i class="bi bi-opencollective"></i> Open source et communautaire
             </div>
             <div class="card-body">
               <h5 class="card-title">L'open source au service de la durabilité</h5>
-              <p class="card-text">Le projet peut être utilisé sur la plateforme mutualisée oressource.org comme hébergé sur son propre serveur et nom de domaine..</p>
+              <p class="card-text">Le projet peut être utilisé sur la plateforme mutualisée oressource.org comme hébergé sur son propre serveur et nom de domaine.</p>
             </div>
           </div>
         </div>
@@ -95,7 +84,18 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">Un logiciel ayant fait ses preuves</h5>
-              <p class="card-text">ORessource existe depuis plus de 10 ans, de nombreuses ressourceries et recycleries l'utilisent (plus de 10% des ressourceries en 2022 selon le RNRR) </p>
+              <p class="card-text">ORessource existe depuis plus de 10 ans, de nombreuses ressourceries et recycleries l'utilisent (plus de 10% des ressourceries en 2022 selon le RNRR).</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <i class="bi bi-window-split"></i> Ergonomie
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Simplicité d'accès</h5>
+              <p class="card-text">Pas de limitation d'accès au nombre de postes ou autres restrictions. Les utilisateurs peuvent utiliser le logiciel depuis n'importe quel type de système d'exploitation (Linux, Windows, Mac) ou appareil (ordi fixe ou portable, tablette, téléphone, ...).</p>
             </div>
           </div>
         </div>
@@ -169,7 +169,7 @@
     </tr>
     <tr>
       <td class="px-2"><strong>Migration depuis autre logiciel</strong><br><span class="text-muted">GDR, Excel, TF-Shop, outils internes, ...</span></td>
-      <td class="text-center" colspan="2"><span class="text-success"><i class="bi bi-check-circle"></i></span><br/><a href="">Nous contacter</a></td>
+      <td class="text-center" colspan="2"><span class="text-success"><i class="bi bi-check-circle"></i></span><br/><a href="/contact">Nous contacter</a></td>
     </tr>
   </tbody>
 </table>
