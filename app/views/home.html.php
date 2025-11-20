@@ -13,6 +13,8 @@
   <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
   <!-- Custom styles for this template -->
   <link href="/css/common.css" rel="stylesheet" />
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
   <div class="bg-white" style="border-bottom: 1px solid #ddd">
@@ -205,7 +207,5 @@
 </div>
 </body>
 
-<script src="/js/jquery-3.7.1.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/main.js"></script>
 </html>
