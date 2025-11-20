@@ -21,7 +21,7 @@
             <p>
                 L'instance est mise à disposition à prix libre par la coopérative 24ème.
                 Sans utilisation pendant une période d'un mois, l'équipe du 24ème pourrait être amenée à la supprimer.
-                L'icone ❤️ dans votre instance vous permettra de contacter le 24ème si vous avez des questions sur la pérénité de votre instannce ou les manière de contribuer à la maintenance de oressource.org et du logiciel ORessource.
+                L'icone ❤️ dans votre instance vous permettra de contacter le 24ème si vous avez des questions sur la pérénité de votre instance ou les manières de contribuer à la maintenance de oressource.org et du logiciel ORessource.
             </p>
             <p>
             <?php if (array_key_exists('from_backup', $SESSION)):?>

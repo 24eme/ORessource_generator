@@ -27,9 +27,9 @@ class CtrlORessourceGenerator
     echo View::instance()->render('/layout.html.php');
   }
 
-  function assistance(Base $f3)
+  function contact(Base $f3)
   {
-    $f3->set('content', 'assistance.html.php');
+    $f3->set('content', 'contact.html.php');
     echo View::instance()->render('/layout.html.php');
   }
 
