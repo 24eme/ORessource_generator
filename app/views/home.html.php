@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ORessource - Plateforme open source de génération d'instance du logiciel ORessource pour les ressourceries</title>
-  <meta name="description" content="Plateforme open source de génération d'instance du logiciel ORessource pour les ressourceries" />
+  <title>Hébergement et maintenance du logiciel libre les ressourceries et recycleries : ORessource</title>
+  <meta name="description" content="oressource.org est une communauté de ressourceries et recycleries, fédérée par la coopérative 24ème,  qui oeuvre à la gestion collective du logiciel libre de caisse et de bilans écologiques." />
   <link rel="icon" type="image/png" sizes="16x16" rel="noopener" target="_blank" href="/images/favicons/favicon_16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" rel="noopener" target="_blank" href="/images/favicons/favicon_32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" rel="noopener" target="_blank" href="/images/favicons/apple_touch_icon_180x180.png">
@@ -43,8 +43,8 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-10 justify-content-center text-center mt-5">
-          <h2>Hébergement du logiciel libre ORessource</h2>
-          <p class="lead mb-4 mt-3">Logiciel de caisse et de bilan écologique pour la gestion en ligne d'une ressourcerie</p>
+          <h1>Logiciel de caisse et de bilans écologiques</h1>
+          <p class="lead mb-4 mt-3">Communauté de gestion numérique de ressourceries et recycleries</p>
         </div>
         <div class="col"></div>
       </div>
@@ -59,8 +59,11 @@
       <a name="projet"></a>
       <h2 class="mt-4 mb-4">Le projet Oressource</h2>
       <p>
-        ORessource est un <a href="https://fr.wikipedia.org/wiki/Logiciel_libre">logiciel libre</a> qui a été développé par <a href="https://github.com/mart1ver/oressource"> @mart1ver et @darnuria</a> en 2014 sur une inspiration de <a href="https://doc.ubuntu-fr.org/utilisateurs/olive">@olive de ubuntu-fr</a> .<br /><br />
-        Il permet de gérer une ressourcerie et est utilisé par environ 11% des ressourceries en France (données de 2022).
+        ORessource est un <a href="https://fr.wikipedia.org/wiki/Logiciel_libre">logiciel libre</a> de gestion de recycleries et de ressourceries permettant aussi bien la gestion de caisse, celle des collectes et les sorties pour les quantifications et les bilans écologiques.
+      </p>
+      <p>
+        Le logiciel a été initialement développé par <a href="https://github.com/mart1ver/oressource">@mart1ver et @darnuria</a> en 2014 sur une inspiration de <a href="https://doc.ubuntu-fr.org/utilisateurs/olive">@olive de ubuntu-fr</a>.
+        En 2025, à l'initiative de la ressourcerie marseillaise La Brigaille, la <a href="https://24eme.fr/">coopérative 24ème</a> propose une plateforme de maintenance et d'hébergement du logiciel en bien commun : oressource.org.
       </p>
       <div class="row">
         <div class="col-sm-6 mt-4">
@@ -69,19 +72,8 @@
               <i class="bi bi-window-split"></i> Ergonomie
             </div>
             <div class="card-body">
-              <h5 class="card-title">Simplicité de saisie</h5>
-              <p class="card-text">Une utilisation précise, répondant à des besoins directs. Pas de chargements ou de pages inutiles.<br /></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 mt-4">
-          <div class="card shadow-sm">
-            <div class="card-header">
-              <i class="bi bi-patch-check"></i> Robustesse
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Un logiciel ayant fait ses preuves</h5>
-              <p class="card-text">ORessource existe depuis plus de 10 ans, de nombreuses ressourceries l'utilise (~ 11% des ressourceries en 2022 selon le RNRR) </p>
+              <h5 class="card-title">Simplicité d'accès</h5>
+              <p class="card-text">Les utilisateurs peuvent utiliser le logiciel depuis n'importe quel type de système d'exploitation (Linux, Windows, Mac) ou appareil (ordinateur fixe ou portable, tablette, téléphone, ...)<br /></p>
             </div>
           </div>
         </div>
@@ -92,7 +84,18 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">L'open source au service de la durabilité</h5>
-              <p class="card-text">Le projet peut être utilisé sur ce site directement ou librement installé sur son propre serveur et nom de domaine.</p>
+              <p class="card-text">Le projet peut être utilisé sur la plateforme mutualisée oressource.org comme hébergé sur son propre serveur et nom de domaine..</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <i class="bi bi-patch-check"></i> Robustesse
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Un logiciel ayant fait ses preuves</h5>
+              <p class="card-text">ORessource existe depuis plus de 10 ans, de nombreuses ressourceries et recycleries l'utilisent (plus de 10% des ressourceries en 2022 selon le RNRR) </p>
             </div>
           </div>
         </div>
@@ -102,8 +105,8 @@
               <i class="bi bi-clock-history"></i> Pérénnité
             </div>
             <div class="card-body">
-              <h5 class="card-title">Pérénnité</h5>
-              <p class="card-text">Le projet ne dépend pas d'une seule entreprise privée et de sa viabilité économique. Il a pour but d'être financé par une communauté et une entreprise coopérative.</p>
+              <h5 class="card-title">Indépendance</h5>
+              <p class="card-text">Le projet ne dépend pas d'une seule entreprise privée et de sa viabilité économique. Le choix du financement en bien commun repose sur une communauté d'utilisateurice offre indépendance et pérénité.</p>
             </div>
           </div>
         </div>
@@ -114,20 +117,59 @@
     <div class="container pt-4 pb-5" style="max-width: 1050px;">
       <a name="fonctionnalites"></a>
       <h2 class="mt-4 mb-3">Plateforme d'hébergement</h2>
-      <p>Nous avons mise en place cette plateforme pour vous proposer d'utiliser ce logiciel en ligne sans avoir à l'installer.</p>
+      <p>La communauté oressource.org propose, via la coopérative 24ème, une plateforme d'hébergement du logiciel libre ORessource. Cette plateforme est proposée à prix libre pour les associations.</p>
       <table class="table table-striped table-sm table-bordered">
   <thead>
     <tr>
-      <th class="col-6"></th>
-      <th class="text-center col-3">Auto hébergement</th>
-      <th class="text-center col-3">Hébergé sur cette plateforme</th>
+      <th class="col-4"></th>
+      <th class="text-center col-4">Auto hébergement</th>
+      <th class="text-center col-4">Hébergé sur oressource.org</th>
     </tr>
   </thead>
   <tbody>
+      <tr>
+        <th class="px-2">Installation</th>
+        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">en quelques clicks</span></td>
+      </tr>
+      <tr>
+        <th class="px-2">Configuration</th>
+        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">instance fournie pré-configurée</span></td>
+      </tr>
+      <tr>
+        <th class="px-2">Monitorisation</th>
+        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">24h/24 7j/7</span></td>
+      </tr>
     <tr>
-      <td>Sauvegarde automatique</td>
-      <td class="text-center">A faire soi même</td>
-      <td class="text-success text-center"><i class="bi bi-check-circle-fill"></i> Réalisé par la plateforme </td>
+      <th class="px-2">Sauvegarde</th>
+      <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">quotidiennes et incrémentales</span></td>
+    </tr>
+    <tr>
+      <th class="px-2">Mise à jour</th>
+      <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Système d'exploitation + ORessource</span></td>
+    </tr>
+    <tr>
+      <th class="px-2">Maintenance / Évolution</th>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">via oressource.org ou tout autre tiers</span></td>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">A prix libre pour les associations</span></td>
+    </tr>
+    <tr>
+      <th class="px-2">Compatibilité technique</th>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Tout navigateur, tout système d'exploitation<br/>(Windows, Linux, Mac, Android, ...)</span></td>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Tout navigateur, tout système d'exploitation<br/>(Windows, Linux, Mac, Android, ...)</span></td>
+    </tr>
+    <tr>
+      <th class="px-2">Migration vers l'autre solution</th>
+      <td class="text-center">Vers solution oressource.org :<br/><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">A partir d'une sauvegarde ORessource</span></td>
+      <td class="text-center">Vers solution auto-hébergée :<br/><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">A partir des sauvegardes fournies</span></td>
+    </tr>
+    <tr>
+      <td class="px-2"><strong>Migration depuis autre logiciel</strong><br><span class="text-muted">GDR, Excel, TF-Shop, outils internes, ...</span></td>
+      <td class="text-center" colspan="2"><span class="text-success"><i class="bi bi-check-circle"></i></span><br/><a href="">Nous contacter</a></td>
     </tr>
   </tbody>
 </table>
@@ -147,7 +189,7 @@
           <img style="max-height: 160px" class="img-fluid" src="https://www.24eme.fr/img/24eme.svg" />
         </div>
         <div class="col-sm-10">
-          <p class="mt-4">Ce plateforme est financée et gérée par le 24ème, une société coopérative spécialisée depuis 2010 dans le développement de logiciels libres pour des communautés de métiers et principalement dans le domaine viticole.</p>
+          <p class="mt-4">La plateforme oressource.org est gérée par la coopérative 24ème, une SCOP spécialisée depuis 2010 dans le développement de logiciels libres pour des communautés de métiers. Elle travaille principalement pour des acteurs de l'ESS notamment issus du monde viticole, juridique, immobilier, ...</p>
           <a href="https://www.24eme.fr/" class="btn btn-link float-end">En savoir plus sur le 24ème</a>
         </div>
       </div>
