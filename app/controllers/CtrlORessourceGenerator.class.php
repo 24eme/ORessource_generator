@@ -57,10 +57,11 @@ class CtrlORessourceGenerator
   }
 
   private function dbExists(Base $f3, $db_name) {
-      $dbh = $this->getDBH($f3);
-      $sql = $dbh->prepare("use `$db_name`");
       try {
-          $sql->execute();
+          $dbh = $this->getDBH($f3, $db_name);
+          if (!$dbh) {
+              return false;
+          }
           return true;
       } catch (Exception $e) {
           return false;
