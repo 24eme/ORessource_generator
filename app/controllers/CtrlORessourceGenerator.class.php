@@ -194,7 +194,7 @@ class CtrlORessourceGenerator
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
       $this->createConfig($f3, $data);
-      $this->createDatabase($f3, $data['user'], $pass);
+      $this->createDatabase($f3, $f3->get('SESSION.db_name'), $pass);
       if (Config::getInstance()->getMailFrom()) {
           $message = "<html><body></body></html>";
           $headers = array(
