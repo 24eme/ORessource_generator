@@ -87,6 +87,7 @@ class CtrlORessourceGenerator
       $f3->set('SESSION', $this->verifyAndCleanData($f3));
       $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
       $f3->set('SESSION.db_name', 'oressource_'.$f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
+      $f3->set('SESSION.instance_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
       $this->verifyDatabaseAndFolder($f3);
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
@@ -189,11 +190,11 @@ class CtrlORessourceGenerator
     $data['pass'] = '$pass = "'. addslashes($pass).'";';
     try {
       clearstatcache(true);
-      if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.db_name'))) {
+      if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.instance_name'))) {
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
       $this->createConfig($f3, $data);
-      $this->createDatabase($f3, $f3->get('SESSION.db_name'), $pass);
+      $this->createDatabase($f3, $data['user'], $pass);
       if (Config::getInstance()->getMailFrom()) {
           $message = "<html><body></body></html>";
           $headers = array(
@@ -230,7 +231,7 @@ class CtrlORessourceGenerator
     if (! is_dir($config_path)) {
         mkdir($config_path);
     }
-    $config_path .= '/config_' . $f3->get('SESSION.db_name') . '.php';
+    $config_path .= '/config_' . $f3->get('SESSION.instance_name') . '.php';
 
     if (! file_put_contents($config_path, "<?php\n\n")) {
         throw new Exception("Erreur au chargement initial du fichier de config");
