@@ -70,7 +70,9 @@ class CtrlORessourceGenerator
     }
     if ($db_name) {
       if ($error == true) {
-        $f3->reroute('/validation');
+        if (file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
+            return $f3->reroute('/validation');
+        }
       }
     }
     $f3->set('from_backup', $f3->get('GET.from_backup'));
