@@ -86,7 +86,7 @@ class CtrlORessourceGenerator
       }
       $f3->set('SESSION', $this->verifyAndCleanData($f3));
       $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
-      $f3->set('SESSION.db_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
+      $f3->set('SESSION.db_name', 'oressource_'.$f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
       $this->verifyDatabaseAndFolder($f3);
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
