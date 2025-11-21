@@ -73,7 +73,7 @@ class CtrlORessourceGenerator
     $error = $this->dbExists($f3, $db_name);
     if ($db_name) {
       if ($error == true) {
-        if (file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
+        if (!file_exists('./'.$f3->get('SESSION.instance_name'))) {
             return $f3->reroute('/validation');
         }
       }
@@ -346,13 +346,13 @@ class CtrlORessourceGenerator
 
   function validation(Base $f3)
   {
-      if (!file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
-          return $f3->reroute('/previsualisation');
+      if (!file_exists('./'.$f3->get('SESSION.instance_name'))) {
+          return $f3->reroute('/previsualisation?nolink='.$f3->get('SESSION.instance_name'));
       }
       $db_name = $f3->get('SESSION.db_name');
       $exists = $this->dbExists($f3, $db_name);
       if (!$exists) {
-          return $f3->reroute('/previsualisation');
+          return $f3->reroute('/previsualisation?nodb='.$dbname);
       }
     $f3->set('content', 'validation.html.php');
     echo View::instance()->render('/layout.html.php');
