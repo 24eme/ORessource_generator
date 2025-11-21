@@ -5,3 +5,5 @@ web/adminer*
 data/dblist.txt
 data/uploads
 data/backup
+oressource/
+web/[0-9AB][0-9]_*
