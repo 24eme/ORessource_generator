@@ -119,13 +119,38 @@ class CtrlORessourceGenerator
     if($data['motDePasse'] != $data['motDePasseRepetition']) {
         throw new Exception("Les 2 mots de passe ne sont pas identique.");
     }
-    if ($_FILES['backupInput']['name']) {
-      if (pathinfo($_FILES['backupInput']['name'], PATHINFO_EXTENSION) != 'sql') {
-        throw new \Exception("Le fichier de sauvegarde déposé n'est pas un fichier sql", 1);
-      }
-      $ret['from_backup'] = $_FILES['backupInput']['name'];
-      move_uploaded_file($_FILES["backupInput"]["tmp_name"], $f3->get('UPLOADS') . $_FILES["backupInput"]["name"]);
-      $ret['backupInput'] = $f3->get('UPLOADS') . $f3->get('FILES.backupInput.name');
+    if (!empty($_FILES['backupInput']['name'])) {
+        $fileName = $_FILES['backupInput']['name'];
+        $fileTmp = $_FILES['backupInput']['tmp_name'];
+        $uploadDir = rtrim($f3->get('UPLOADS'), '/') . '/';
+        $extension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        if (!in_array($extension, ['sql', 'zip'])) {
+            throw new \Exception("Le fichier doit être un fichier SQL ou une archive ZIP contenant un fichier SQL", 1);
+        }
+        $destPath = $uploadDir . $fileName;
+        if (!move_uploaded_file($fileTmp, $destPath)) {
+            throw new \Exception("Échec lors du déplacement du fichier uploadé", 1);
+        }
+        $ret['from_backup'] = $fileName;
+        if ($extension === 'zip') {
+            $zip = new ZipArchive;
+            if ($zip->open($destPath) === TRUE) {
+                $zip->extractTo($uploadDir);
+                $zip->close();
+                $sqlFile = glob($uploadDir . "*.sql");
+                if (empty($sqlFile)) {
+                    throw new \Exception("Aucun fichier SQL trouvé dans l'archive ZIP", 1);
+                }
+                $ret['backupInput'] = $sqlFile[0];
+                if (file_exists($destPath)) {
+                  unlink($destPath);
+                }
+            } else {
+                throw new \Exception("Impossible d'ouvrir le fichier ZIP", 1);
+            }
+        } else {
+            $ret['backupInput'] = $destPath;
+        }
     }
     return $ret;
   }
