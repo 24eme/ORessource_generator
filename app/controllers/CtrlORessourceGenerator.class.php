@@ -253,16 +253,22 @@ class CtrlORessourceGenerator
 
     $sql = $dbh->prepare("CREATE DATABASE `$db_name`");
     if (!$sql->execute()) {
+        $errors = $sql->errorInfo();
+        error_log("Erreur lors de la création de la base $db_name: ".$errors[2]);
         throw new \Exception("Erreur lors de la création de la base");
     }
 
     $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
     if (!$sql->execute(array(':user' => $user, ':pass' => $pass))) {
+        $errors = $sql->errorInfo();
+        error_log("Erreur lors de la création de l'utilisateur $user: ".$errors[2]);
         throw new \Exception("Erreur lors de la création de l'utilisateur");
     }
 
     $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
     if (!$sql->execute(array(':user' => $user, ':pass' => $pass))) {
+        $errors = $sql->errorInfo();
+        error_log("Erreur lors de l'attribution des droits $user: ".$errors[2]);
         throw new \Exception("Erreur lors de l'attribution des droits");
     }
 
@@ -272,7 +278,7 @@ class CtrlORessourceGenerator
       $backup = $f3->get('ROOT').'/data/oressource_schema.sql';
     }
     if (! $this->loadDataInDatabase($f3, $backup, $f3->get('SESSION.db_name'), $user, $pass)) {
-      throw new \Exception("Erreur au chargement de la sauvegarde");
+        throw new \Exception("Erreur au chargement de la sauvegarde");
     }
   }
 
@@ -285,6 +291,8 @@ class CtrlORessourceGenerator
     $replace = [addslashes($f3->get('SESSION.nomRessourcerie')), addslashes($f3->get('SESSION.adresseRessourcerie')),
                 addslashes($f3->get('SESSION.emailRessourcerie')), addslashes($f3->get('SESSION.ville')), date('Y-m-d H:i:s')];
     if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
+        $errors = $dbh->errorInfo();
+        error_log("Erreur query backup pour $db_name: ".$errors[2]);
         return false;
     }
 
@@ -295,7 +303,9 @@ class CtrlORessourceGenerator
                          'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
 
     if (! $ret) {
-      return false;
+        $errors = $sth->errorInfo();
+        error_log("Erreur query user pour $db_name: ".$errors[2]);
+        return false;
     }
 
     return true;
