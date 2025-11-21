@@ -131,32 +131,32 @@
   <tbody>
       <tr>
         <th class="px-2">Installation</th>
-        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
-        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">en quelques clicks</span></td>
+        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">À faire soi même</span></td>
+        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">En quelques clicks</span></td>
       </tr>
       <tr>
         <th class="px-2">Configuration</th>
-        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
-        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">instance fournie pré-configurée</span></td>
+        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">À faire soi même</span></td>
+        <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Instance fournie pré-configurée</span></td>
       </tr>
       <tr>
         <th class="px-2">Monitorisation</th>
-        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+        <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">À faire soi même</span></td>
         <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">24h/24 7j/7</span></td>
       </tr>
     <tr>
       <th class="px-2">Sauvegarde</th>
-      <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
-      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">quotidiennes et incrémentales</span></td>
+      <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">À faire soi même</span></td>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Externalisées, quotidiennes et incrémentales</span></td>
     </tr>
     <tr>
       <th class="px-2">Mise à jour</th>
-      <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">A faire soi même</span></td>
+      <td class="text-center"><i class="bi bi-check"></i><br/><span class="text-muted">À faire soi même</span></td>
       <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Système d'exploitation + ORessource</span></td>
     </tr>
     <tr>
       <th class="px-2">Maintenance / Évolution</th>
-      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">via oressource.org ou tout autre tiers</span></td>
+      <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">Via oressource.org ou tout autre tiers</span></td>
       <td class="text-center"><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">A prix libre pour les associations</span></td>
     </tr>
     <tr>
@@ -166,8 +166,8 @@
     </tr>
     <tr>
       <th class="px-2">Migration vers l'autre solution</th>
-      <td class="text-center">Vers solution oressource.org :<br/><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">A partir d'une sauvegarde ORessource</span></td>
-      <td class="text-center">Vers solution auto-hébergée :<br/><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">A partir des sauvegardes fournies</span></td>
+      <td class="text-center">Vers solution oressource.org :<br/><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">À partir d'une sauvegarde ORessource</span></td>
+      <td class="text-center">Vers solution auto-hébergée :<br/><span class="text-success"><i class="bi bi-check-circle-fill"></i></span><br/><span class="text-muted">À partir des sauvegardes fournies</span></td>
     </tr>
     <tr>
       <td class="px-2"><strong>Migration depuis autre logiciel</strong><br><span class="text-muted">GDR, Excel, TF-Shop, outils internes, ...</span></td>
