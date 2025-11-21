@@ -81,6 +81,9 @@ class CtrlORessourceGenerator
   function dataCheck(Base $f3)
   {
     try {
+      if ($f3->get('POST.accronyme') != 'RNRR') {
+        throw new Exception('Erreur de Capchta');
+      }
       $f3->set('SESSION', $this->verifyAndCleanData($f3));
       $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
       $f3->set('SESSION.db_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));

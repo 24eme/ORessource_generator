@@ -18,7 +18,7 @@
           <form id="formInfo" class="needs-validation" action="/dataCheck" method="post" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-8">
-                <label for="nomRessourcerie" class="form-label">Le nom de votre structure</label>
+                <label for="nomRessourcerie" class="form-label"><strong>Le nom de votre structure</strong></label>
                 <input type="text" class="form-control" id="nomRessourcerie" name="nomRessourcerie" placeholder="Ma structure" value="<?php if (array_key_exists('nomRessourcerie', $SESSION)){echo $SESSION['nomRessourcerie'];} ?>" required>
                 <div class="invalid-feedback">
                   Nom de la structure nécessaire
@@ -51,7 +51,7 @@
               </div>
 
               <div class="col-8">
-                <label for="email" class="form-label">Adresse email</small></label>
+                <label for="email" class="form-label"><strong>Adresse email</strong></label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="vous@mastructure.fr" value="<?php if (array_key_exists('emailRessourcerie', $SESSION)){echo $SESSION['emailRessourcerie'];} ?>" required>
                 <p class="text-muted">Cette adresse email vous servira d'identifiant administrateur.ice</p>
                 <div class="invalid-feedback">
@@ -61,7 +61,7 @@
               </div>
 
               <div class="col-8 mb-2">
-                <label for="motDePasse" class="form-label">Mot de passe administrateur.ice</label>
+                <label for="motDePasse" class="form-label"><strong>Mot de passe administrateur.ice</strong></label>
                 <div class="input-group has-validation">
                   <input type="password" class="form-control" id="motDePasse" name="motDePasse" placeholder="" required>
                   <div class="invalid-feedback">
@@ -83,7 +83,7 @@
                <div class="mt-4 col-8">
                     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="sauvegarde" <?php if (array_key_exists('from_backup', $_GET) && $_GET['from_backup'] == true) {echo "checked";} ?>>
-                    <label class="form-check-label" for="sauvegarde">Démarrer à partir d'une sauvegarde</label>
+                    <label class="form-check-label" for="sauvegarde"><strong>Démarrer à partir d'une sauvegarde</strong></label>
                     </div>
                </div>
 
@@ -93,7 +93,22 @@
                     </div>
                     <input id="fromBackup" type="hidden" name="from_backup" value="">
                 </div>
+
+                <div class="mt-4 mb-2 col-12">
+                     <strong>Vérifions que vous n'êtes pas un robot (mais une humain.e)</strong>
+                </div>
+
                 <div class="col-12">
+                    <div class="row">
+                        <div class="col-8">
+                            <label class="form-label">Quel est l'accronyme du Réseau National des Ressourceries et Recycleries ?</label>
+                            <input type="text" class="form-control" id="accronyme" name="accronyme" placeholder=" (en majuscule) " required=required size=5/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mt-5 col-12">
                     <hr />
                     <button class="btn btn-primary btn-lg float-end" type="submit">Valider mes informations</button>
                 </div>
