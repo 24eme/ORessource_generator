@@ -35,7 +35,7 @@
                 <tr>
                     <th><i class="bi bi-shield-check"></i>&nbsp;Adresse URL de votre instance</th>
                     <td>
-                        <span id="url_data"><?php echo 'https://'.$_SERVER['HTTP_HOST'].'/'.$SESSION['db_name'].'/';?></span>
+                        <span id="url_data"><?php echo 'https://'.$_SERVER['HTTP_HOST'].'/'.$SESSION['instance_name'].'/';?></span>
                         <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('url_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
                     </td>
                 </tr>
@@ -55,7 +55,7 @@
                 </tr>
             </table>
             <p class="text-center">
-                 <a class="btn btn-primary mt-3" href="/<?php echo $SESSION['db_name']; ?>/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> &nbsp; Accéder au site</a>
+                 <a class="btn btn-primary mt-3" href="/<?php echo $SESSION['instance_name']; ?>/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> &nbsp; Accéder au site</a>
             </p>
             </div>
           </div>

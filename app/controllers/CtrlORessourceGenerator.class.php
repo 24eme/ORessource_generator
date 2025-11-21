@@ -86,7 +86,8 @@ class CtrlORessourceGenerator
       }
       $f3->set('SESSION', $this->verifyAndCleanData($f3));
       $f3->set('SESSION.departement', substr($f3->get('SESSION.codePostal'), 0, 2));
-      $f3->set('SESSION.db_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
+      $f3->set('SESSION.db_name', 'oressource_'.$f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
+      $f3->set('SESSION.instance_name', $f3->get('SESSION.departement').'_'.$f3->get('SESSION.nomRessourcerie_base'));
       $this->verifyDatabaseAndFolder($f3);
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
@@ -214,7 +215,7 @@ class CtrlORessourceGenerator
     $data['pass'] = '$pass = "'. addslashes($pass).'";';
     try {
       clearstatcache(true);
-      if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.db_name'))) {
+      if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.instance_name'))) {
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
       $this->createConfig($f3, $data);
@@ -255,7 +256,7 @@ class CtrlORessourceGenerator
     if (! is_dir($config_path)) {
         mkdir($config_path);
     }
-    $config_path .= '/config_' . $f3->get('SESSION.db_name') . '.php';
+    $config_path .= '/config_' . $f3->get('SESSION.instance_name') . '.php';
 
     if (! file_put_contents($config_path, "<?php\n\n")) {
         throw new Exception("Erreur au chargement initial du fichier de config");
@@ -277,16 +278,22 @@ class CtrlORessourceGenerator
 
     $sql = $dbh->prepare("CREATE DATABASE `$db_name`");
     if (!$sql->execute()) {
+        $errors = $sql->errorInfo();
+        error_log("Erreur lors de la création de la base $db_name: ".$errors[2]);
         throw new \Exception("Erreur lors de la création de la base");
     }
 
     $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
     if (!$sql->execute(array(':user' => $user, ':pass' => $pass))) {
+        $errors = $sql->errorInfo();
+        error_log("Erreur lors de la création de l'utilisateur $user: ".$errors[2]);
         throw new \Exception("Erreur lors de la création de l'utilisateur");
     }
 
     $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
     if (!$sql->execute(array(':user' => $user, ':pass' => $pass))) {
+        $errors = $sql->errorInfo();
+        error_log("Erreur lors de l'attribution des droits $user: ".$errors[2]);
         throw new \Exception("Erreur lors de l'attribution des droits");
     }
 
@@ -296,7 +303,7 @@ class CtrlORessourceGenerator
       $backup = $f3->get('ROOT').'/data/oressource_schema.sql';
     }
     if (! $this->loadDataInDatabase($f3, $backup, $f3->get('SESSION.db_name'), $user, $pass)) {
-      throw new \Exception("Erreur au chargement de la sauvegarde");
+        throw new \Exception("Erreur au chargement de la sauvegarde");
     }
   }
 
@@ -309,6 +316,8 @@ class CtrlORessourceGenerator
     $replace = [addslashes($f3->get('SESSION.nomRessourcerie')), addslashes($f3->get('SESSION.adresseRessourcerie')),
                 addslashes($f3->get('SESSION.emailRessourcerie')), addslashes($f3->get('SESSION.ville')), date('Y-m-d H:i:s')];
     if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
+        $errors = $dbh->errorInfo();
+        error_log("Erreur query backup pour $db_name: ".$errors[2]);
         return false;
     }
 
@@ -319,7 +328,9 @@ class CtrlORessourceGenerator
                          'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
 
     if (! $ret) {
-      return false;
+        $errors = $sth->errorInfo();
+        error_log("Erreur query user pour $db_name: ".$errors[2]);
+        return false;
     }
 
     return true;
