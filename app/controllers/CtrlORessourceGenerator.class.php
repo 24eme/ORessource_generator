@@ -98,7 +98,7 @@ class CtrlORessourceGenerator
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
       return $f3->reroute('/create');
     }
-    return $f3->reroute('/visualisation');
+    return $f3->reroute('/previsualisation');
   }
 
   public static function cleanInput($s) {
@@ -204,17 +204,9 @@ class CtrlORessourceGenerator
     return ! is_dir('./'. $db_name);
   }
 
-  function visualisation(Base $f3)
+  function previsualisation(Base $f3)
   {
-    $f3->set('content', 'visualisation.html.php');
-    if (!file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
-        return $f3->reroute('/validation');
-    }
-    $db_name = $f3->get('SESSION.db_name');
-    $exists = $this->dbExists($f3, $db_name);
-    if (!$exists) {
-        return $f3->reroute('/validation');
-    }
+    $f3->set('content', 'previsualisation.html.php');
     echo View::instance()->render('/layout.html.php');
   }
 
@@ -251,7 +243,7 @@ class CtrlORessourceGenerator
       }
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
-      return $f3->reroute('/visualisation');
+      return $f3->reroute('/previsualisation');
     }
 
     return $f3->reroute('/validation');
@@ -354,6 +346,14 @@ class CtrlORessourceGenerator
 
   function validation(Base $f3)
   {
+      if (!file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
+          return $f3->reroute('/previsualisation');
+      }
+      $db_name = $f3->get('SESSION.db_name');
+      $exists = $this->dbExists($f3, $db_name);
+      if (!$exists) {
+          return $f3->reroute('/previsualisation');
+      }
     $f3->set('content', 'validation.html.php');
     echo View::instance()->render('/layout.html.php');
   }
