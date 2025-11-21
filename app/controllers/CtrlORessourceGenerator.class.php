@@ -251,13 +251,19 @@ class CtrlORessourceGenerator
     $dbh = $this->getDBH($f3);
 
     $sql = $dbh->prepare("CREATE DATABASE `$db_name`");
-    $sql->execute();
+    if (!$sql->execute()) {
+        throw new \Exception("Erreur lors de la création de la base");
+    }
 
     $sql = $dbh->prepare("CREATE USER :user@localhost IDENTIFIED BY :pass;");
-    $sql->execute(array(':user' => $user, ':pass' => $pass));
+    if (!$sql->execute(array(':user' => $user, ':pass' => $pass))) {
+        throw new \Exception("Erreur lors de la création de l'utilisateur");
+    }
 
     $sql = $dbh->prepare("GRANT SELECT, INSERT, UPDATE, DELETE, LOCK TABLES ON `$db_name`.* TO :user@'localhost' IDENTIFIED BY :pass;");
-    $sql->execute(array(':user' => $user, ':pass' => $pass));
+    if (!$sql->execute(array(':user' => $user, ':pass' => $pass))) {
+        throw new \Exception("Erreur lors de l'attribution des droits");
+    }
 
     if ($f3->get('SESSION.from_backup') && $f3->get('SESSION.backupInput')) {
       $backup = $f3->get('SESSION.backupInput');
