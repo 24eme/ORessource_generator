@@ -215,6 +215,9 @@ class CtrlORessourceGenerator
     $data['pass'] = '$pass = "'. addslashes($pass).'";';
     try {
       clearstatcache(true);
+      if (file_exists('./'.$f3->get('SESSION.instance_name'))) {
+          throw new \Exception("L'instance existe déjà", 1);
+      }
       if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.instance_name'))) {
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
