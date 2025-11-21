@@ -56,18 +56,21 @@ class CtrlORessourceGenerator
       return $dbh;
   }
 
+  private function dbExists(Base $f3, $db_name) {
+      $dbh = $this->getDBH($f3);
+      $sql = $dbh->prepare("use `$db_name`");
+      try {
+          $sql->execute();
+          return true;
+      } catch (Exception $e) {
+          return false;
+      }
+  }
+
   function create(Base $f3)
   {
-
-    $dbh = $this->getDBH($f3);
     $db_name = $f3->get('SESSION.db_name');
-    $sql = $dbh->prepare("use `$db_name`");
-    try {
-        $sql->execute();
-        $error = true;
-    } catch (Exception $e) {
-        $error = false;
-    }
+    $error = $this->dbExists($f3, $db_name);
     if ($db_name) {
       if ($error == true) {
         if (file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
@@ -204,6 +207,14 @@ class CtrlORessourceGenerator
   function visualisation(Base $f3)
   {
     $f3->set('content', 'visualisation.html.php');
+    if (!file_exists(Config::getInstance()->getORessourcePath().'/'.$f3->get('SESSION.instance_name'))) {
+        return $f3->reroute('/validation');
+    }
+    $db_name = $f3->get('SESSION.db_name');
+    $exists = $this->dbExists($f3, $db_name);
+    if (!$exists) {
+        return $f3->reroute('/validation');
+    }
     echo View::instance()->render('/layout.html.php');
   }
 
