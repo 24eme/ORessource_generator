@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="mt-4 mb-2 col-12">
-                     <strong>Vérifions que vous n'êtes pas un robot (mais une humain.e)</strong>
+                     <strong>Vérifions que vous n'êtes pas un robot (mais un.e humain.e)</strong>
                 </div>
 
                 <div class="col-12">
