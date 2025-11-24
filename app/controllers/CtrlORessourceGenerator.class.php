@@ -129,6 +129,9 @@ class CtrlORessourceGenerator
             throw new \Exception("Le fichier doit être un fichier SQL ou une archive ZIP contenant un fichier SQL", 1);
         }
         $destPath = $uploadDir . $fileName;
+        if (!is_dir($uploadDir)) {
+          mkdir($uploadDir, 0755);
+        }
         if (!move_uploaded_file($fileTmp, $destPath)) {
             throw new \Exception("Échec lors du déplacement du fichier uploadé", 1);
         }
@@ -320,19 +323,16 @@ class CtrlORessourceGenerator
         error_log("Erreur query backup pour $db_name: ".$errors[2]);
         return false;
     }
-
     $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`timestamp`, `niveau`, `nom`, `prenom`, `mail`, `pass`, `id_createur`, `id_last_hero`, `last_hero_timestamp`) ".
                          "VALUES (:timestamp, :niveau, :nom, :prenom, :mail, :pass, :id_createur, :id_last_hero, :last_hero_timestamp);");
     $ret = $sth->execute(['timestamp' => date('Y-m-d H:i:s'), 'niveau' => 'c1c2c3v1v2v3s1s2s3bighljk', 'nom' => 'administrateur.ice',
                          'prenom' => 'oressource', 'mail' => $f3->get('SESSION.emailRessourcerie'), 'pass' => md5($f3->get('SESSION.motDePasse')),
                          'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
-
     if (! $ret) {
         $errors = $sth->errorInfo();
         error_log("Erreur query user pour $db_name: ".$errors[2]);
         return false;
     }
-
     return true;
   }
 
