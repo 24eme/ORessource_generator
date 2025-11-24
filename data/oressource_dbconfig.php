@@ -19,7 +19,10 @@
  */
 
 // Changer ces valeurs selon votre configuration de systeme de base de donnée.include(/config_global/);
-include('../config/config_'.explode('/', $_SERVER['REQUEST_URI'])[1].'.php');
+global $oressource_instance_name;
+
+$oressource_instance_name = explode('/', $_SERVER['REQUEST_URI'])[1];
+include('../config/config_'.$oressource_instance_name.'.php');
 
 $menu_extra = ['Assistance' => '/contact', 'Contact' => '/contact', 'À propos' => '/#projet'];
 

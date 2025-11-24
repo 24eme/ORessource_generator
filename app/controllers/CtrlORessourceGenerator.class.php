@@ -56,21 +56,27 @@ class CtrlORessourceGenerator
       return $dbh;
   }
 
+  private function dbExists(Base $f3, $db_name) {
+      try {
+          $dbh = $this->getDBH($f3, $db_name);
+          if (!$dbh) {
+              return false;
+          }
+          return true;
+      } catch (Exception $e) {
+          return false;
+      }
+  }
+
   function create(Base $f3)
   {
-
-    $dbh = $this->getDBH($f3);
     $db_name = $f3->get('SESSION.db_name');
-    $sql = $dbh->prepare("use `$db_name`");
-    try {
-        $sql->execute();
-        $error = true;
-    } catch (Exception $e) {
-        $error = false;
-    }
+    $error = $this->dbExists($f3, $db_name);
     if ($db_name) {
       if ($error == true) {
-        $f3->reroute('/validation');
+        if (!file_exists('./'.$f3->get('SESSION.instance_name'))) {
+            return $f3->reroute('/validation');
+        }
       }
     }
     $f3->set('from_backup', $f3->get('GET.from_backup'));
@@ -93,7 +99,7 @@ class CtrlORessourceGenerator
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
       return $f3->reroute('/create');
     }
-    return $f3->reroute('/visualisation');
+    return $f3->reroute('/previsualisation');
   }
 
   public static function cleanInput($s) {
@@ -202,9 +208,9 @@ class CtrlORessourceGenerator
     return ! is_dir('./'. $db_name);
   }
 
-  function visualisation(Base $f3)
+  function previsualisation(Base $f3)
   {
-    $f3->set('content', 'visualisation.html.php');
+    $f3->set('content', 'previsualisation.html.php');
     echo View::instance()->render('/layout.html.php');
   }
 
@@ -218,6 +224,9 @@ class CtrlORessourceGenerator
     $data['pass'] = '$pass = "'. addslashes($pass).'";';
     try {
       clearstatcache(true);
+      if (file_exists('./'.$f3->get('SESSION.instance_name'))) {
+          throw new \Exception("L'instance existe déjà", 1);
+      }
       if (! symlink(Config::getInstance()->getORessourcePath(), './'.$f3->get('SESSION.instance_name'))) {
         throw new \Exception("Erreur à la création du lien symbolique", 1);
       }
@@ -238,7 +247,7 @@ class CtrlORessourceGenerator
       }
     } catch (Exception $e) {
       \Flash::instance()->addMessage("Erreur : ".$e->getMessage(), 'danger');
-      return $f3->reroute('/visualisation');
+      return $f3->reroute('/previsualisation');
     }
 
     return $f3->reroute('/validation');
@@ -338,6 +347,14 @@ class CtrlORessourceGenerator
 
   function validation(Base $f3)
   {
+      if (!file_exists('./'.$f3->get('SESSION.instance_name'))) {
+          return $f3->reroute('/previsualisation?nolink='.$f3->get('SESSION.instance_name'));
+      }
+      $db_name = $f3->get('SESSION.db_name');
+      $exists = $this->dbExists($f3, $db_name);
+      if (!$exists) {
+          return $f3->reroute('/previsualisation?nodb='.$dbname);
+      }
     $f3->set('content', 'validation.html.php');
     echo View::instance()->render('/layout.html.php');
   }
