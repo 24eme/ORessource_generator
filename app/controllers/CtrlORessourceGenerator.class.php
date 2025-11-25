@@ -355,7 +355,7 @@ class CtrlORessourceGenerator
     if (! $ret && $sth->errorCode() != '23000') {
         $errors = $sth->errorInfo();
         error_log("Erreur query user pour $db_name: ".$errors[2]);
-        throw new \Exception("PDO Error : [".$sth->errorInfo()[0]."] - SQL error : [".$sth->errorInfo()[1]."] - ".$sth->errorInfo()[2]);
+        throw new \Exception(nl2br("PDO Error : [".$sth->errorInfo()[0]."] - SQL error : [".$sth->errorInfo()[1]."] - ".$sth->errorInfo()[2]."\n Contactez le 24eme pour de l'aide : <a href='mailto:contact@24eme.fr'>contact@24eme.fr</a>"));
         return false;
     }
     return true;
