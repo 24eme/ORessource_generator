@@ -113,7 +113,7 @@ class CtrlORessourceGenerator
     $ret = array();
     $data = $f3->get('POST');
     $ret['nomRessourcerie'] = self::cleanInput($data['nomRessourcerie']);
-    $ret['nomRessourcerie_base'] = Web::instance()->slug($ret['nomRessourcerie']);
+    $ret['nomRessourcerie_base'] = str_replace('-', '', Web::instance()->slug($ret['nomRessourcerie']));
     $ret['adresseRessourcerie'] = self::cleanInput($data['adresseRessourcerie']);
     if (preg_match('/^[0-9AB]{5}$/', $data['codePostal'])) {
         $ret['codePostal'] =  $data['codePostal'];
