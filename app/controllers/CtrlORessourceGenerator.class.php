@@ -324,10 +324,11 @@ class CtrlORessourceGenerator
     $dbh = $this->getDBH($f3, $db_name);
 
     $dbh->beginTransaction();
+    $cleanBackup = preg_replace("/DEFAULT CHARSET[^;]+;/", ';', file_get_contents($backup));
     $search = ['NOM_RESSOURCERIE', 'ADRESSE_RESSOURCERIE', 'MAIL_RESSOURCERIE', 'VILLE_RESSOURCERIE', 'DATE_CREATION'];
     $replace = [addslashes($f3->get('SESSION.nomRessourcerie')), addslashes($f3->get('SESSION.adresseRessourcerie')),
                 addslashes($f3->get('SESSION.emailRessourcerie')), addslashes($f3->get('SESSION.ville')), date('Y-m-d H:i:s')];
-    if (! $dbh->query(str_replace($search, $replace, file_get_contents($backup)))) {
+    if (! $dbh->query(str_replace($search, $replace, $cleanBackup))) {
         $errors = $dbh->errorInfo();
         error_log("Erreur query backup pour $db_name: ".$errors[2]);
         return false;
