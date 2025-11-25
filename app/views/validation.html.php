@@ -49,8 +49,16 @@
                 <tr>
                     <th><i class="bi bi-key"></i>&nbsp;Mot de passe</th>
                     <td>
-                        <span id="mdp_data"><?php echo $SESSION['motDePasse'];?></span>
-                        <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('mdp_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                          <?php if ($SESSION['motDePasse']): ?>
+                            <span id="mdp_data">
+                              <?php echo $SESSION['motDePasse'];?>
+                            </span>
+                            <button class="btn text-muted" type="button" onclick="navigator.clipboard.writeText(document.getElementById('mdp_data').innerText); this.innerText = 'copié !';"><i class="bi bi-clipboard"></i></button>
+                          <?php else: ?>
+                            <span class="">
+                              Votre mot de passe ORessource habituel correspondant à cet identifiant
+                            </span>
+                          <?php endif; ?>
                     </td>
                 </tr>
             </table>

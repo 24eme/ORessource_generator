@@ -52,7 +52,7 @@ class CtrlORessourceGenerator
       if ($dbname) {
           $pdo_schema .= ';dbname='.$dbname;
       }
-      $dbh = new PDO($pdo_schema, $user, $passwd);
+      $dbh = new PDO($pdo_schema, $user, $passwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT));
       return $dbh;
   }
 
@@ -332,14 +332,29 @@ class CtrlORessourceGenerator
         error_log("Erreur query backup pour $db_name: ".$errors[2]);
         return false;
     }
+
+    $queryUser = $dbh->prepare("
+        SELECT *
+        FROM `utilisateurs`
+        WHERE `mail` = :mail
+    ");
+    $queryUser->execute([
+        'mail' => $f3->get('SESSION.emailRessourcerie')
+    ]);
+    $userIsNotUnique = $queryUser->fetchAll(PDO::FETCH_ASSOC);
+    if ($userIsNotUnique) {
+      $f3->set('SESSION.motDePasse', '');
+    }
+
     $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`timestamp`, `niveau`, `nom`, `prenom`, `mail`, `pass`, `id_createur`, `id_last_hero`, `last_hero_timestamp`) ".
                          "VALUES (:timestamp, :niveau, :nom, :prenom, :mail, :pass, :id_createur, :id_last_hero, :last_hero_timestamp);");
     $ret = $sth->execute(['timestamp' => date('Y-m-d H:i:s'), 'niveau' => 'c1c2c3v1v2v3s1s2s3bighljk', 'nom' => 'administrateur.ice',
                          'prenom' => 'oressource', 'mail' => $f3->get('SESSION.emailRessourcerie'), 'pass' => md5($f3->get('SESSION.motDePasse')),
                          'id_createur' => 1, 'id_last_hero' => 1, 'last_hero_timestamp' =>  date('Y-m-d H:i:s')]);
-    if (! $ret) {
+    if (! $ret && $sth->errorCode() != '23000') {
         $errors = $sth->errorInfo();
         error_log("Erreur query user pour $db_name: ".$errors[2]);
+        throw new \Exception("PDO Error : [".$sth->errorInfo()[0]."] - SQL error : [".$sth->errorInfo()[1]."] - ".$sth->errorInfo()[2]);
         return false;
     }
     return true;
